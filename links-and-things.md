@@ -18,15 +18,16 @@ Reminder to Robert, we're talking to MMWConf folks. Keep basics superficial poin
   + running one command after another 
   + loops
   + functions
-+ OCLC API and ORCID API
-  + Additional APIs? EDS?
++ OCLC API, EDS and ORCID API
+  + Pen a publisher on a sitation
+  + Find out what other publications we can find in EDS/ORCID
 + Open Refine
   + Basic transformations 
   + Replaying transformations
   + Original data not destroyed
   + Filtering results
 
-## Topics
+## Other Topics
 
 + Why command line?
   + Available Mac, Windows or Linux platform
@@ -47,7 +48,4 @@ Reminder to Robert, we're talking to MMWConf folks. Keep basics superficial poin
    + Maybe, [Penn examples](https://project.library.upenn.edu/confluence/display/sushitoolkit/Home)
 + Transforming your data in Open Refine
   + Playing back transforms
-
-## Background materials
-
 + Eric Phetteplace/Coral Sheldon-Hess - [command line bootcamp](https://github.com/csheldonhess/c4l16-cli-workshop)
