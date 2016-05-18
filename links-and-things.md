@@ -8,13 +8,19 @@ Reminder to Robert, we're talking to MMWConf folks. Keep basics superficial poin
 + Bash
   + file handling
     + coversions, renaming, moving, deleting
-+ Curl
-  + wget
-  + git
++ Commands
+  + curl
+  + find
+  + sed (for changing content in a pipe-line)
   + jq
++ Bash scripts
+  + running one command after another 
+  + loops
+  + functions
 + OCLC API
   + Additional API? EDS? ORCID?
 + Open Refine
+  + Replaying transformations
 
 ## Topics
 
