@@ -1,5 +1,5 @@
 
-# Random notes
+# Links and things
 
 Reminder to Robert, we're talking to MMWConf folks. Keep basics superficial pointed to with links and focus on specific API.
 
