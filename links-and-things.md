@@ -12,6 +12,7 @@ Reminder to Robert, we're talking to MMWConf folks. Keep basics superficial poin
   + curl
   + find
   + sed (for changing content in a pipe-line)
+  + cut
   + jq
 + Bash scripts
   + running one command after another 
