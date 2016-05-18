@@ -17,8 +17,8 @@ Reminder to Robert, we're talking to MMWConf folks. Keep basics superficial poin
   + running one command after another 
   + loops
   + functions
-+ OCLC API and ???
-  + Additional API? EDS? ORCID?
++ OCLC API and ORCID API
+  + Additional APIs? EDS?
 + Open Refine
   + Basic transformations 
   + Replaying transformations
