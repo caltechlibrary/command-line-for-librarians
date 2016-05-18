@@ -5,9 +5,14 @@
 
 + Bash
 + Curl
+  + Additionally wget?
 + OCLC API
   + Additional API? EDS? ORCID?
 + Open Refine
+
+## Exercises
+
+How many?
 
 ## Background
 
