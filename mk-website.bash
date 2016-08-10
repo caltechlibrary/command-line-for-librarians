@@ -19,9 +19,6 @@ md2slides -css css/slides.css -template slide.tmpl presentation.md
 # index.html
 makePage README.md nav.md index.html
 
-# abstract.html
-makePage abstract.md nav.md abstract.html 
-
 # install.html (slide presentation)
 makePage INSTALL.md nav.md install.html
 
