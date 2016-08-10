@@ -13,9 +13,10 @@ Reminder to Robert, we're talking to MMWConf folks. Keep basics superficial poin
 + Commands
   + curl
   + find
-  + jq
-  + md2slides
-  + mkpages
+  + [jq](https://stephendolan.github.io/jq/)
+  + [md2slides](https://caltechlibrary.github.io/md2slides)
+  + [mkpage](https://caltechlibrary.github.io/mkpage)
+  + [ws](https://caltechlibrary.github.io/ws)
 + Bash scripts
   + running one command after another 
   + loops

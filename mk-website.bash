@@ -25,4 +25,6 @@ makePage abstract.md nav.md abstract.html
 # install.html (slide presentation)
 makePage INSTALL.md nav.md install.html
 
+# outline.md
+makePage outline.md nav.md outline.html
 

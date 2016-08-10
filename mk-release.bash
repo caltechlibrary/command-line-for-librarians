@@ -1,15 +1,15 @@
 #!/bin/bash
-RELEASE_NAME=archivesspace-api-workshop
+RELEASE_NAME="command-line-for-librarians"
 zip -r $RELEASE_NAME-slides.zip README.md LICENSE
-findfile -s .css | while read FNAME; do
+find . -type f | grep -E '.css$' | while read FNAME; do
     zip -r $RELEASE_NAME-slides.zip $FNAME
 done
-findfile -s .html | while read FNAME; do
+find . -type f | grep -E '.html$' | while read FNAME; do
     zip -r $RELEASE_NAME-slides.zip $FNAME
 done
-findfile -s .py | while read FNAME; do
+find . -type f | grep -E '.json$' | while read FNAME; do
     zip -r $RELEASE_NAME-slides.zip $FNAME
 done
-findfile -s .json | while read FNAME; do
+find . -type f | grep -E '.md$' | while read FNAME; do
     zip -r $RELEASE_NAME-slides.zip $FNAME
 done
