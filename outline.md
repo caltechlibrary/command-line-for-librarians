@@ -6,21 +6,24 @@ Reminder to Robert, we're talking to MMWConf folks. Keep basics superficial poin
 ## General Topics
 
 + Bash
-  + file handling
-    + coversions, renaming, moving, deleting
+    + file ops
+        + copying, renaming, moving, deleting, pipes
+    + basename
+    + strings ops
 + Commands
   + curl
   + find
-  + sed (for changing content in a pipe-line)
-  + cut
   + jq
+  + md2slides
+  + mkpages
 + Bash scripts
   + running one command after another 
   + loops
   + functions
-+ OCLC API, EDS and ORCID API
++ ORCID API, CrossRef API, OCLC API
   + Pen a publisher on a sitation
-  + Find out what other publications we can find in EDS/ORCID
+  + Find out what other publications we can find
+  + Render results in webpage
 + Open Refine
   + Basic transformations 
   + Replaying transformations

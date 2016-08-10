@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+   {{- if .Title -}}<title>{{ .Title }}</title>{{- end}}
+   <link href="{{ .CSSPath }}" rel="stylesheet" />
+</head>
+<body>
+	<nav>
+{{ if ne .CurNo .FirstNo -}}
+<a id="start-slide" rel="nav" href="{{printf "%02d-%s.html" .FirstNo .FName}}" title="Return to start of presentation">Start</a>
+{{- end}}
+{{ if gt .CurNo .FirstNo -}} 
+<a id="prev-slide" rel="nav" href="{{printf "%02d-%s.html" .PrevNo .FName}}" title="Previous slide">Prev</a>
+{{- end}}
+{{ if lt .CurNo .LastNo -}} 
+<a id="next-slide" rel="nav" href="{{printf "%02d-%s.html" .NextNo .FName}}" title="Next slide">Next</a>
+{{- end}}
+	</nav>
+	<section>{{ .Content }}</section>
+   <script type="text/javascript" src="js/keyboard-nav.js"></script>
+</body>
+</html>
+
