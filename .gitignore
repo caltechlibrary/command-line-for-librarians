@@ -1,0 +1,7 @@
+
+# Project ignores
+bin/*
+dist/*
+*~
+*swp
+*.zip
