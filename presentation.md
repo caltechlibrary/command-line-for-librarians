@@ -4,10 +4,13 @@
 ## MMWCon 2016
 
 + Presenter Heather Wilson
-+ Acquisitions and Electronic Resources Librarian
-+ California Institute of Technology
+    + Acquisitions and Electronic Resources Librarian
+    + California Institute of Technology
++ Presenter R. S. Doiel
+    + Digital Services Programmer, Caltech Library
+    + California Institute of Technology
 
-[presentation website](index.html)
+About: [presentation](index.html)
 
 --
 

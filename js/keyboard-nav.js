@@ -10,16 +10,22 @@ document.onkeydown = function(e) {
         /* case 32: */
         case 37:
             // Previous: left arrow
-            prev.click();
+            if (prev) {
+                prev.click();
+            }
             break;
         case 39:
             // Next: right arrow
-            next.click();
+            if (next) {
+                next.click();
+            }
             break;
         case 72:
         case 83:
             // Home/Start: h, s
-            start.click();
+            if (start) {
+                start.click();
+            }
             break;
     }
 };

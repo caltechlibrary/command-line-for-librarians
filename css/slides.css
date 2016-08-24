@@ -8,7 +8,7 @@
  *  White: #000000
  */
 body {
-	font-size: 18px;
+	font-size: calc(1em+1vw);
 	font-family: sans-serif;
     width: 100%;
     height: 100%;
@@ -19,65 +19,18 @@ body {
     margin-right: 0;
 }
 
-
-footer {
-    position: absolute;
-    bottom: 0em;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: auto;
-    padding: 0.24em;
-    color: white;
-    background-color: #616265;
-    text-align: left;
-    vertical-align: bottom;
-    z-index: 2;
-}
-
-footer h1, footer span, footer address {
-    position: relative;
-    display: inline-block;
-    margin: 0;
-    padding-left: 0.24em;
-    font-family: Open Sans, Helvetica, Sans-Serif;
-    font-size: 1em;
-    vertical-align: bottom;
-}
-
-footer h1 {
-    font-size: 2em;
-    font-weight: normal;
-}
-
-footer a, footer a:link, footer a:visited, footer a:active, footer a:focus, footer a:hover {
-    padding: 0;
-    display: inline;
-    margin: 0;
-    color: #FF6E1E;
-    text-decoration: none;
-}
-
-footer img {
-    margin: 0;
-    padding: 0;
-    width: auto;
-    height: 1em;
-}
-
-
 ul {
-	list-style: circle;
+	list-style: disc;
 	text-indent: 0.25em;
 }
 
 nav {
 	position: absolute;
-   	top: 0.24em; 
-	margin:0;
-	padding:0;
+   	top: 1.24em; 
+	margin: 0;
+	padding: 0;
 	width: 100%;
-	height: auto;
+	height: 2em;
 	text-align: left;
 	font-size: 70%;
 }
@@ -98,12 +51,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 80%;
+    font-size: 1em;
     color: blue;
+    padding-bottom: 1em;
 }
 
 h2 {
-    font-size: 90%;
+    font-size: 1.24em;
     padding-bottom: 0.48em;
     color: green;
 }
@@ -112,7 +66,7 @@ h3 {
     text-transform: uppercase;
     font-style: italic;
     font-weight: normal;
-    font-size: 95%;
+    font-size: 1.36;
 }
 
 em {
@@ -124,35 +78,32 @@ em {
 }
 
 section, p {
+    padding-top: 1em;
 	max-width: 90%;
 }
 
 code {
-    border-radius: 4em 1.24em 4em;
-    padding-left:0.24em;
-    padding-right:0.24em;
+	color: green; 
     font-family: monospace, serif;
     font-style: none;
-	color: forestgreen; 
-    background-color: lightyellow;
 }
 
 pre {
     width: 90%;
     height: auto;
-    border:0.28em solid green;
     border-radius: 4em 1.24em 4em;
     padding: 1.24em;
     font-family: monospace, serif;
-    font-size: 100%;
-    font-weight: bold;
-	color: forestgreen; 
-    background-color: lightyellow;
+    font-size: 90%;
+	color: yellow; 
+    background-color: black;
 }
 
 pre > code {
     font-family: monospace, serif;
     font-style: ;
+	color: yellow; 
+    background-color: black;
     padding: 0;
 }
 
@@ -168,14 +119,14 @@ blockquote {
 }
 
 .language-shell {
-    color: darkblue;
+    color: cyan;
 }
 
 .language-json {
-    color: blue;
+    color: yellow;
 }
 
-.language-bash {
-    color: yellow;
-    font-weight: lighter;
+.language-python {
+    color: limegreen;
 }
+

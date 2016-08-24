@@ -21,7 +21,7 @@ body {
      color: #FF6E1E;
      background-color: white;
      font-family: Open Sans, Helvetica, Sans-Serif;
-     font-size: 16px;
+     font-size: calc(1em+1vm);
 }
 
 header {
@@ -164,7 +164,7 @@ section h3 {
 section ul {
     display: block;
     list-style: inside;
-    list-style-type: square;
+    list-style-type: '- ';
     margin: 0;
     padding-left: 1.24em;
 }
@@ -204,8 +204,7 @@ aside ul > ul {
 }
 
 footer {
-     clear: all;
-     position: absolute;
+     position: relative;
      bottom: 0;
      display: block;
      width: 100%;
@@ -215,7 +214,7 @@ footer {
 
      font-size: 80%;
      text-align: left;
-     vertical-align: bottom;
+     vertical-align: middle;
      z-index: 2;
 }
 
@@ -226,11 +225,9 @@ footer h1, footer span, footer address {
      padding-left: 0.24em;
      font-family: Open Sans, Helvetica, Sans-Serif;
      font-size: 1em;
-     vertical-align: bottom;
 }
 
 footer h1 {
-     font-size: 2em;
      font-weight: normal;
 }
 

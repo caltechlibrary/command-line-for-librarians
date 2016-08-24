@@ -5,23 +5,22 @@
    <link href="{{ .CSSPath }}" rel="stylesheet" />
 </head>
 <body>
-	<nav>
+   <nav>
 {{ if ne .CurNo .FirstNo -}}
-<a id="start-slide" rel="nav" href="{{printf "%02d-%s.html" .FirstNo .FName}}" title="Return to start of presentation">Start</a>
+        <a id="start-slide" rel="nav" href="{{printf "%02d-%s.html" .FirstNo .FName}}" title="Return to start of presentation">Start</a>
 {{- end}}
 {{ if gt .CurNo .FirstNo -}} 
-<a id="prev-slide" rel="nav" href="{{printf "%02d-%s.html" .PrevNo .FName}}" title="Previous slide">Prev</a>
+        <a id="prev-slide" rel="nav" href="{{printf "%02d-%s.html" .PrevNo .FName}}" title="Previous slide">Prev</a>
 {{- end}}
 {{ if lt .CurNo .LastNo -}} 
-<a id="next-slide" rel="nav" href="{{printf "%02d-%s.html" .NextNo .FName}}" title="Next slide">Next</a>
+        <a id="next-slide" rel="nav" href="{{printf "%02d-%s.html" .NextNo .FName}}" title="Next slide">Next</a>
 {{- end}}
-	</nav>
+   </nav>
 
-	<section>{{ .Content }}</section>
+   <section>{{ .Content }}</section>
 
-    <footer>
-        <a href="http://library.caltech.edu"><img src="./assets/liblogo.gif" alt="Caltech Library logo"></a>
-    </footer>
+   <footer>
+   </footer>
    <script type="text/javascript" src="js/keyboard-nav.js"></script>
 </body>
 </html>
