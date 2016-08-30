@@ -18,15 +18,15 @@ Reminder to Robert, we're talking to MMWConf folks. Keep basics superficial poin
   + [mkpage](https://caltechlibrary.github.io/mkpage)
   + [ws](https://caltechlibrary.github.io/ws)
 + Bash scripts
-  + running one command after another 
+  + running one command after another
   + loops
   + functions
 + ORCID API, CrossRef API, OCLC API
-  + Pen a publisher on a sitation
+  + Pen a publisher on a situation
   + Find out what other publications we can find
   + Render results in webpage
 + Open Refine
-  + Basic transformations 
+  + Basic transformations
   + Replaying transformations
   + Original data not destroyed
   + Filtering results
