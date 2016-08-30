@@ -98,14 +98,38 @@ About: [presentation](index.html)
 
 # Case Study (api keys, mostly open web API)
 
+(see https://rsdoiel.github.io/bash-curl-and-jq-presentation/14-presentation.html for similar content)
+
 Get a list and generate a webpage
 
 ## ORCID
 
 + Problem
     + Generate a publication list for colleague's homepage
-+ Steps
-    + Find the colleagues' ORCID
++ Setup ORCID API Access if you don't have it already
+    + [http://members.orcid.org/api/accessing-public-api](https://members.orcid.org/api/accessing-public-api)
++ Find your colleague's ORCID id
+    + Search [http://orcid.org/](http://orcid.org/) contains a search box up along the top of the page
+    + Enter your colleague's name and find their ORCID id
+
+--
+
+# Case Study (api keys, mostly open web API)
+
+## ORCID
+
++ Setup ORCID API Access if you don't have it already
+    + Signup at [http://orcid.org/register](http://orcid.org/register)
+    + Go to your ORCID profile [http://orcid.org/my-orcid](http://orcid.org/my-orcid)
+    + Go to developer tools [http://orcid.org/developer-tools)
+--
+
+# Case Study (api keys, mostly open web API)
+
+## ORCID
+
++ Steps to get data
+    + Find the colleagues' [ORCID](http://orcid.org/0000-0003-0248-0813)
     + Decide which ORCID end point we want query
         + Look like the Works end point is what we want
     + Fetch the data
