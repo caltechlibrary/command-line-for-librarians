@@ -10,24 +10,34 @@
 <a id="next-slide" rel="nav" href="12-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Case Study (data source, open web API)</h1>
+   <section><h1>Case Study (api keys, mostly open web API)</h1>
 
-<p>Applying the techniques of the open web</p>
+<p>Get a list and generate a webpage</p>
 
-<h2>OCLC Public Web API retrieving Call Numbers</h2>
+<h2>ORCID</h2>
 
 <ul>
 <li>Problem
 
 <ul>
-<li>Processing a CSV file to get additional call number data from OCLC web API</li>
-<li>Data comes back as XML</li>
+<li>Generate a publication list for colleague&rsquo;s homepage</li>
 </ul></li>
-<li>Lessons learned
+<li>Steps
 
 <ul>
-<li>leverage environment variables for</li>
-<li>authorization key handling</li>
+<li>Find the colleagues&rsquo; ORCID</li>
+<li>Decide which ORCID end point we want query
+
+<ul>
+<li>Look like the Works end point is what we want</li>
+</ul></li>
+<li>Fetch the data
+
+<ul>
+<li>Know the headers we&rsquo;re going to send</li>
+<li>Compose the URL to make the query (e.g. parameters and path we&rsquo;re sending)</li>
+</ul></li>
+<li>Run cURL</li>
 </ul></li>
 </ul>
 </section>
