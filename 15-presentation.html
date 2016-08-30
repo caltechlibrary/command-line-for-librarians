@@ -10,29 +10,28 @@
 <a id="next-slide" rel="nav" href="16-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Data Cleanup</h1>
+   <section><h1>Case Study (data source, open web API)</h1>
+
+<p>(get the call number of the journals holding the open access articles from OCLC)</p>
+
+<p>Applying the techniques of the open web</p>
+
+<h2>OCLC Public Web API retrieving Call Numbers</h2>
 
 <ul>
-<li>Open Refine Workflow
+<li>Problem
 
 <ul>
-<li>Downloaded raw data
-
-<ul>
-<li>Get data from web address</li>
-<li>Previously fetched data (e.g. ORCID record)</li>
+<li>Processing a CSV file to get additional call number data from OCLC web API</li>
+<li>Data comes back as XML</li>
 </ul></li>
-<li>Import
+<li>Lessons learned
 
 <ul>
-<li>CSV</li>
-<li>JSON</li>
-</ul></li>
-<li>Versions
+<li>Leverage environment variables for
 
 <ul>
-<li>Raw data</li>
-<li>Clean file</li>
+<li>Authorization key handling</li>
 </ul></li>
 </ul></li>
 </ul>

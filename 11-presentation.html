@@ -12,6 +12,8 @@
 
    <section><h1>Case Study (api keys, mostly open web API)</h1>
 
+<p>(see <a href="https://rsdoiel.github.io/bash-curl-and-jq-presentation/14-presentation.html">https://rsdoiel.github.io/bash-curl-and-jq-presentation/14-presentation.html</a> for similar content)</p>
+
 <p>Get a list and generate a webpage</p>
 
 <h2>ORCID</h2>
@@ -22,22 +24,16 @@
 <ul>
 <li>Generate a publication list for colleague&rsquo;s homepage</li>
 </ul></li>
-<li>Steps
+<li>Setup ORCID API Access if you don&rsquo;t have it already
 
 <ul>
-<li>Find the colleagues&rsquo; ORCID</li>
-<li>Decide which ORCID end point we want query
-
-<ul>
-<li>Look like the Works end point is what we want</li>
+<li><a href="https://members.orcid.org/api/accessing-public-api">http://members.orcid.org/api/accessing-public-api</a></li>
 </ul></li>
-<li>Fetch the data
+<li>Find your colleague&rsquo;s ORCID id
 
 <ul>
-<li>Know the headers we&rsquo;re going to send</li>
-<li>Compose the URL to make the query (e.g. parameters and path we&rsquo;re sending)</li>
-</ul></li>
-<li>Run cURL</li>
+<li>Search <a href="http://orcid.org/">http://orcid.org/</a> contains a search box up along the top of the page</li>
+<li>Enter your colleague&rsquo;s name and find their ORCID id</li>
 </ul></li>
 </ul>
 </section>
