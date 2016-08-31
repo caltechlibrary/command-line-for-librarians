@@ -10,29 +10,15 @@
 <a id="next-slide" rel="nav" href="23-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Case Study (api keys, mostly open web API)</h1>
+   <section><h1>Saving our environment</h1>
 
-<h2>ORCID</h2>
+<p>To save typing and avoid hard coding secrets in our
+scripts later we save the client id and secret in our
+shell environment (this is destoryed when we exit the shell)</p>
 
-<ul>
-<li>Steps to get data
-
-<ul>
-<li>Find the colleagues&rsquo; <a href="http://orcid.org/0000-0003-0248-0813">ORCID</a></li>
-<li>Decide which ORCID end point we want query
-
-<ul>
-<li>Look like the Works end point is what we want</li>
-</ul></li>
-<li>Fetch the data
-
-<ul>
-<li>Know the headers we&rsquo;re going to send</li>
-<li>Compose the URL to make the query (e.g. parameters and path we&rsquo;re sending)</li>
-</ul></li>
-<li>Run cURL</li>
-</ul></li>
-</ul>
+<pre><code class="language-shell">    export ORCID_CLIENT_ID=YOUR-CLIENT-ID-GOES-HERE
+    export ORCID_CLIENT_SECRET=YOUR-CLIENT-SECRET-GOES-HERE
+</code></pre>
 </section>
 
    <footer>

@@ -10,32 +10,22 @@
 <a id="next-slide" rel="nav" href="27-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Data Cleanup</h1>
+   <section><h1>Creating a webpage with <em>mkpage</em></h1>
 
 <ul>
-<li>Open Refine Workflow
-
-<ul>
-<li>Downloaded raw data
-
-<ul>
-<li>Get data from web address</li>
-<li>Previously fetched data (e.g. ORCID record)</li>
-</ul></li>
-<li>Import
-
-<ul>
-<li>CSV</li>
-<li>JSON</li>
-</ul></li>
-<li>Versions
-
-<ul>
-<li>Raw data</li>
-<li>Clean file</li>
-</ul></li>
-</ul></li>
+<li><a href="https://githbub.com/caltechlibrary/mkpage/releases/latest">mkpage</a> is a single page template engine</li>
+<li><a href="page.tmpl">A simple HTML template</a></li>
 </ul>
+
+<pre><code class="language-shell">    mkpage &quot;title=text:Publications List&quot; \
+           &quot;name=text:Donna Wrublewski&quot; 
+           &quot;orcid=text:0000-0003-0248-0813&quot;
+           &quot;works=example.json&quot; \
+           page-pubs.tmpl \
+           &gt; wrublewski-pubs.html
+</code></pre>
+
+<p>See <a href="wrublewsky-pubs.html">wrublewsky-pubs.html</a>.</p>
 </section>
 
    <footer>

@@ -150,6 +150,15 @@ The modern command line includes
 + ORCID has an API
    + https://orcid.org/organizations/integrators/API 
 
+-- 
+
+# An example ORCID listing
+
++ Our colleague Donna Wrublewski: http://orcid.org/0000-0003-0248-0813
++ Her ORCID Id: 0000-0003-0248-0813
++ The Works section is the data we want pull for our article list
+
+(image of webpage)
 
 --
 
@@ -192,9 +201,21 @@ The modern command line includes
 + Go to http://orcid.org/my-orcid and sign in
 + Clik on "developer tools" in the upper menu
     + &#8658; https://orcid.org/developer-tools
+    + Verify your Email
+    + Register your "App"
 + Enable developer tools
     + after that is complete you can "Register for the free ORCID public API"
 + See this http://support.orcid.org/knowledgebase/articles/343182 for details
+
+(see images ORCID1.png - ORCID6.png)
+
+-- 
+
+# Getting started with ORCID
+
++ Goals were
+    + Know your "Client ID" (application id)
+    + Know your "Client Secret" (application private key)
 
 --
 
@@ -205,50 +226,124 @@ The modern command line includes
 + Profile data
     + About ORCID access and control
 + Biographical data
-    + Related data like education
+    + Related data like education the ORCID holder volunteers
 + Works data &#8656; This is what we want for our biblographic list
     + Publications list
 
 --
 
-# ORCID API
+# ORCID API 
 
-(see https://rsdoiel.github.io/bash-curl-and-jq-presentation/14-presentation.html for similar content)
+## For your reference
 
-Get a list and generate a webpage
-
-## ORCID
-
-+ Problem
-    + Generate a publication list for colleague's homepage
 + Setup ORCID API Access if you don't have it already
-    + [http://members.orcid.org/api/accessing-public-api](https://members.orcid.org/api/accessing-public-api)
-+ Find your colleague's ORCID id
-    + Search [http://orcid.org/](http://orcid.org/) contains a search box up along the top of the page
-    + Enter your colleague's name and find their ORCID id
+    + http://members.orcid.org/api/accessing-public-api
+    + Tutorials
+        + [Retrieving ORCID id](https://members.orcid.org/api/tutorial-retrieve-orcid-id)
+        + [Retrieving Public Data](https://members.orcid.org/api/tutorial-retrieve-data-using-public-api)
+        + [Using the search API](https://members.orcid.org/api/tutorial-searching-data-using-api)
 
 --
 
-## ORCID
+# Getting our data
 
-+ Setup ORCID API Access if you don't have it already
-    + Signup at [http://orcid.org/register](http://orcid.org/register)
-    + Go to your ORCID profile [http://orcid.org/my-orcid](http://orcid.org/my-orcid)
-    + Go to developer tools [http://orcid.org/developer-tools)
+## Accessing ORCID API with cURL
+
++ save our "Client ID" and "Client Secret" in our environment
++ sort out our cURL command with appriate header and URL
++ saving the result
+
 --
 
-# Case Study (api keys, mostly open web API)
+# Saving our environment
 
-## ORCID
+To save typing and avoid hard coding secrets in our
+scripts later we save the client id and secret in our
+shell environment (this is destoryed when we exit the shell)
 
-+ Steps to get data
-    + Find the colleagues' [ORCID](http://orcid.org/0000-0003-0248-0813)
-    + Decide which ORCID end point we want query
-        + Look like the Works end point is what we want
-    + Fetch the data
-        + Know the headers we're going to send
-        + Compose the URL to make the query (e.g. parameters and path we're sending)
-    + Run cURL
+```shell
+    export ORCID_CLIENT_ID=YOUR-CLIENT-ID-GOES-HERE
+    export ORCID_CLIENT_SECRET=YOUR-CLIENT-SECRET-GOES-HERE
+```
+
+--
+
+# Authenticating with the API
+
+```shell
+    curl -L -H "Accept: application/json" \
+         -d "client_id=$ORCID_CLIENT_ID" \
+         -d "client_secret=$ORCID_CLIENT_SECRET" \
+         -d "scope=/read-public" \
+         -d "grant_type=client_credentials" \
+         "https://pub.orcid.org/oauth/token"
+```
+
++ Note the URL and how we pass our client id and secret
++ This should return a JSON blob with our access token 
+
+```json
+    {"access_token":"ACCESS_TOKEN_WOULD_BE_HERE","token_type":"bearer","refresh_token":"A_REFRESH_TOKEN_IS_HERE","expires_in":631138518,"scope":"/read-public","orcid":null}
+```
+
+See [scripts/api-login.bash](scripts/api-login.bash.txt) for a scripted version
+
+---
+
+# Save the access token for re-use
+
+The access token is a really long alphanumeric string with dashes. 
+
++ copy that to your clipboard and paste into a new environment variable
+
+```shell
+    export ORCID_ACCESS_TOKEN=ORCID-ACCESS-TOKEN-GOES-HERE
+```
+
+Now we can start querying the API for data
+
+--
+
+# Using the auth token to access API data
+
+
+
+```shell
+    curl -L -H "Content-Type: application/json" \
+         -H "Authorization: Bearer $ORCID_ACCESS_TOKEN" \
+         -X GET "https://pub.orcid.org/v1.2/0000-0003-0248-0813/orcid-works" > example.json
+```
+
++ Note we're using the public ORCID API v1.2
++ ORCID id is 0000-0003-0248-0813
++ We're piping the result into *example.json*
+
+--
+
+# Here's the result we saved
+
++ [Unformate JSON response](unformated-example.txt)
++ [example.json](example.json) - should pretty print if you have JSONView installed
++ [formatted JSON response](formatted-example.txt) with [jq](https://stedolan.github.io/jq)
+
+--
+
+# Creating a webpage with *mkpage*
+
++ [mkpage](https://githbub.com/caltechlibrary/mkpage/releases/latest) is a single page template engine
++ [A simple HTML template](page.tmpl)
+
+```shell
+    mkpage "title=text:Publications List" \
+           "name=text:Donna Wrublewski" 
+           "orcid=text:0000-0003-0248-0813"
+           "works=example.json" \
+           page-pubs.tmpl \
+           > wrublewski-pubs.html
+```
+
+See [wrublewsky-pubs.html](wrublewsky-pubs.html).
+
 
 --
 # Case Study (data assembly)

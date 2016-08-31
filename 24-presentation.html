@@ -10,30 +10,17 @@
 <a id="next-slide" rel="nav" href="25-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Case Study (data source, open web API)</h1>
+   <section><h1>Using the auth token to access API data</h1>
 
-<p>(get the call number of the journals holding the open access articles from OCLC)</p>
-
-<p>Applying the techniques of the open web</p>
-
-<h2>OCLC Public Web API retrieving Call Numbers</h2>
-
-<ul>
-<li>Problem
+<pre><code class="language-shell">    curl -L -H &quot;Content-Type: application/json&quot; \
+         -H &quot;Authorization: Bearer $ORCID_ACCESS_TOKEN&quot; \
+         -X GET &quot;https://pub.orcid.org/v1.2/0000-0003-0248-0813/orcid-works&quot; &gt; example.json
+</code></pre>
 
 <ul>
-<li>Processing a CSV file to get additional call number data from OCLC web API</li>
-<li>Data comes back as XML</li>
-</ul></li>
-<li>Lessons learned
-
-<ul>
-<li>Leverage environment variables for
-
-<ul>
-<li>Authorization key handling</li>
-</ul></li>
-</ul></li>
+<li>Note we&rsquo;re using the public ORCID API v1.2</li>
+<li>ORCID id is 0000-0003-0248-0813</li>
+<li>We&rsquo;re piping the result into <em>example.json</em></li>
 </ul>
 </section>
 

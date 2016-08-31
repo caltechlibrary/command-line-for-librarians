@@ -10,26 +10,40 @@
 <a id="next-slide" rel="nav" href="24-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Case Study (data assembly)</h1>
+   <section><h1>Authenticating with the API</h1>
 
-<p>(Check the list of article titles from our colleague and see what is open access)</p>
-
-<h2>DOAJ API finding Open Access Journals</h2>
-
-<ul>
-<li>Problem
-
-<ul>
-<li>Assemble a list of Open Access articles by keyword, by author, by title</li>
-<li>generate reports, list of links, or indexes for searching</li>
-</ul></li>
-<li>Steps
+<pre><code class="language-shell">    curl -L -H &quot;Accept: application/json&quot; \
+         -d &quot;client_id=$ORCID_CLIENT_ID&quot; \
+         -d &quot;client_secret=$ORCID_CLIENT_SECRET&quot; \
+         -d &quot;scope=/read-public&quot; \
+         -d &quot;grant_type=client_credentials&quot; \
+         &quot;https://pub.orcid.org/oauth/token&quot;
+</code></pre>
 
 <ul>
-<li>Identify the field you are searching on (simple query example)</li>
-<li>Identify the data path to the field (e.g. bibjson.title.exact)</li>
-</ul></li>
+<li>Note the URL and how we pass our client id and secret</li>
+<li>This should return a JSON blob with our access token</li>
 </ul>
+
+<pre><code class="language-json">    {&quot;access_token&quot;:&quot;ACCESS_TOKEN_WOULD_BE_HERE&quot;,&quot;token_type&quot;:&quot;bearer&quot;,&quot;refresh_token&quot;:&quot;A_REFRESH_TOKEN_IS_HERE&quot;,&quot;expires_in&quot;:631138518,&quot;scope&quot;:&quot;/read-public&quot;,&quot;orcid&quot;:null}
+</code></pre>
+
+<p>See <a href="scripts/api-login.bash.txt">scripts/api-login.bash</a> for a scripted version</p>
+
+<hr />
+
+<h1>Save the access token for re-use</h1>
+
+<p>The access token is a really long alphanumeric string with dashes.</p>
+
+<ul>
+<li>copy that to your clipboard and paste into a new environment variable</li>
+</ul>
+
+<pre><code class="language-shell">    export ORCID_ACCESS_TOKEN=ORCID-ACCESS-TOKEN-GOES-HERE
+</code></pre>
+
+<p>Now we can start querying the API for data</p>
 </section>
 
    <footer>
