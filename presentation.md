@@ -134,7 +134,7 @@ The modern command line includes
 
 + Collect some background info
 + Identify systems that may have the information we want
-+ Query them saving the resulting data (preferrable as JSON)
++ Query those systems and saving the resulting data (preferrable as JSON)
 + Munging the data
 + Render a webpage
 
