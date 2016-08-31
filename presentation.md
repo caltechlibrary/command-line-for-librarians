@@ -136,16 +136,17 @@ The modern command line includes
 + Identify systems that may have the information we want
 + Query those systems and saving the resulting data (preferrable as JSON)
 + Munging the data
-+ Render a webpage
++ Import the data into our repository
++ Produce a webpage
 
 --
 
 # Our discovery
 
 + Our colleague has an "ORCID id"
-    + See [http://orcid.org](https://orcid.org)
+    + See http://orcid.org
 + ORCID is an unique identifier for authors and researchers
-+ Many publications support ORCID, some will likely require it in the future
++ Many publications support ORCID (likely require in the future)
 + ORCID has an API
    + https://orcid.org/organizations/integrators/API 
 
@@ -155,9 +156,9 @@ The modern command line includes
 # ORCID API
 
 + The ORCID API has three types access
-    + Public
-    + Member
-    + Sandbox
+    + Public (read)
+    + Member (read/write)
+    + Sandbox (read/write, for testing)
 
 --
 
@@ -176,6 +177,24 @@ The modern command line includes
 + We need to have an ORCID id ourselves
 + Once we have our own ORCID we can get a developer key
 + Once you have the developer key you can access the API
+
+--
+
+# Getting started with ORCID
+
++ Go to http://orcid.org/register
++ Complete this process creates your ORCID Profile
+
+--
+
+# Getting started with ORCID
+
++ Go to http://orcid.org/my-orcid and sign in
++ Clik on "developer tools" in the upper menu
+    + &#8658; https://orcid.org/developer-tools
++ Enable developer tools
+    + after that is complete you can "Register for the free ORCID public API"
++ See this http://support.orcid.org/knowledgebase/articles/343182 for details
 
 --
 
@@ -209,8 +228,6 @@ Get a list and generate a webpage
     + Enter your colleague's name and find their ORCID id
 
 --
-
-# Case Study (api keys, mostly open web API)
 
 ## ORCID
 
