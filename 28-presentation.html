@@ -10,29 +10,24 @@
 <a id="next-slide" rel="nav" href="29-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Case Study (data source, open web API)</h1>
+   <section><h1>Case Study (data assembly)</h1>
 
-<p>(get the call number of the journals holding the open access articles from OCLC)</p>
+<p>(Check the list of article titles from our colleague and see what is open access)</p>
 
-<p>Applying the techniques of the open web</p>
-
-<h2>OCLC Public Web API retrieving Call Numbers</h2>
+<h2>DOAJ API finding Open Access Journals</h2>
 
 <ul>
 <li>Problem
 
 <ul>
-<li>Processing a CSV file to get additional call number data from OCLC web API</li>
-<li>Data comes back as XML</li>
+<li>Assemble a list of Open Access articles by keyword, by author, by title</li>
+<li>generate reports, list of links, or indexes for searching</li>
 </ul></li>
-<li>Lessons learned
+<li>Steps
 
 <ul>
-<li>Leverage environment variables for
-
-<ul>
-<li>Authorization key handling</li>
-</ul></li>
+<li>Identify the field you are searching on (simple query example)</li>
+<li>Identify the data path to the field (e.g. bibjson.title.exact)</li>
 </ul></li>
 </ul>
 </section>

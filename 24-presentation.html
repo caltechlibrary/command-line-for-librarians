@@ -10,18 +10,40 @@
 <a id="next-slide" rel="nav" href="25-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Using the auth token to access API data</h1>
+   <section><h1>Authenticating with the API</h1>
 
-<pre><code class="language-shell">    curl -L -H &quot;Content-Type: application/json&quot; \
-         -H &quot;Authorization: Bearer $ORCID_ACCESS_TOKEN&quot; \
-         -X GET &quot;https://pub.orcid.org/v1.2/0000-0003-0248-0813/orcid-works&quot; &gt; example.json
+<pre><code class="language-shell">    curl -L -H &quot;Accept: application/json&quot; \
+         -d &quot;client_id=$ORCID_CLIENT_ID&quot; \
+         -d &quot;client_secret=$ORCID_CLIENT_SECRET&quot; \
+         -d &quot;scope=/read-public&quot; \
+         -d &quot;grant_type=client_credentials&quot; \
+         &quot;https://pub.orcid.org/oauth/token&quot;
 </code></pre>
 
 <ul>
-<li>Note we&rsquo;re using the public ORCID API v1.2</li>
-<li>ORCID id is 0000-0003-0248-0813</li>
-<li>We&rsquo;re piping the result into <em>example.json</em></li>
+<li>Note the URL and how we pass our client id and secret</li>
+<li>This should return a JSON blob with our access token</li>
 </ul>
+
+<pre><code class="language-json">    {&quot;access_token&quot;:&quot;ACCESS_TOKEN_WOULD_BE_HERE&quot;,&quot;token_type&quot;:&quot;bearer&quot;,&quot;refresh_token&quot;:&quot;A_REFRESH_TOKEN_IS_HERE&quot;,&quot;expires_in&quot;:631138518,&quot;scope&quot;:&quot;/read-public&quot;,&quot;orcid&quot;:null}
+</code></pre>
+
+<p>See <a href="scripts/api-login.bash.txt">scripts/api-login.bash</a> for a scripted version</p>
+
+<hr />
+
+<h1>Save the access token for re-use</h1>
+
+<p>The access token is a really long alphanumeric string with dashes.</p>
+
+<ul>
+<li>copy that to your clipboard and paste into a new environment variable</li>
+</ul>
+
+<pre><code class="language-shell">    export ORCID_ACCESS_TOKEN=ORCID-ACCESS-TOKEN-GOES-HERE
+</code></pre>
+
+<p>Now we can start querying the API for data</p>
 </section>
 
    <footer>

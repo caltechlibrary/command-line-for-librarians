@@ -209,7 +209,7 @@ The modern command line includes
 
 (see images ORCID1.png - ORCID6.png)
 
--- 
+--
 
 # Getting started with ORCID
 
