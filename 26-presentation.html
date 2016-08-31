@@ -10,18 +10,20 @@
 <a id="next-slide" rel="nav" href="27-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Using the auth token to access API data</h1>
+   <section><h1>Save the access token for re-use</h1>
 
-<pre><code class="language-shell">    curl -L -H &quot;Content-Type: application/json&quot; \
-         -H &quot;Authorization: Bearer $ORCID_ACCESS_TOKEN&quot; \
-         -X GET &quot;https://pub.orcid.org/v1.2/0000-0003-0248-0813/orcid-works&quot; &gt; example.json
-</code></pre>
+<p>The access token is a really long alphanumeric string with dashes.</p>
 
 <ul>
-<li>Note we&rsquo;re using the public ORCID API v1.2</li>
-<li>ORCID id is 0000-0003-0248-0813</li>
-<li>We&rsquo;re piping the result into <em>example.json</em></li>
+<li>copy that to your clipboard and paste into a new environment variable</li>
 </ul>
+
+<pre><code class="language-shell">    export ORCID_ACCESS_TOKEN=89f0181c-168b-4d7d-831c-1fdda2d7bbbb
+</code></pre>
+
+<p>Now we can start querying the API for data</p>
+
+<p><strong>access token: 89f0181c-168b-4d7d-831c-1fdda2d7bbbb is an example only, it was from <a href="http://members.orcid.org/api/tutorial-retrieve-orcid-id">http://members.orcid.org/api/tutorial-retrieve-orcid-id</a></strong></p>
 </section>
 
    <footer>

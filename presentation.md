@@ -156,12 +156,13 @@ The modern command line includes
 + ORCID has an API
    + https://orcid.org/organizations/integrators/API 
 
--- 
+--
 
 # An example ORCID listing
 
-+ Our colleague Donna Wrublewski: http://orcid.org/0000-0003-0248-0813
++ Our colleague Donna Wrublewski
 + Her ORCID Id: 0000-0003-0248-0813
++ Her profile url will be: http://orcid.org/0000-0003-0248-0813
 + The Works section is the data we want pull for our article list
 
 (image of webpage)
@@ -171,9 +172,9 @@ The modern command line includes
 # ORCID API
 
 + The ORCID API has three types access
-    + Public (read)
-    + Member (read/write)
-    + Sandbox (read/write, for testing)
+    + Public (read) - https://pub.orcid.org
+    + Member (read/write) - https://members.orcid.org
+    + Sandbox (read/write, for testing) - https://pub.sandbox.orcid.org
 
 --
 
@@ -189,9 +190,9 @@ The modern command line includes
 
 ## How do we get started?
 
-+ We need to have an ORCID id ourselves
-+ Once we have our own ORCID we can get a developer key
-+ Once you have the developer key you can access the API
++ We need to have our own ORCID id
++ Once we have our own ORCID we can enable developer access
++ We can get a client id and secret (this is what we used to authenticate)
 
 --
 
@@ -219,9 +220,10 @@ The modern command line includes
 
 # Getting started with ORCID
 
-+ Goals were
-    + Know your "Client ID" (application id)
-    + Know your "Client Secret" (application private key)
+The point of all that was to 
+
++ Know our "Client ID" (application id)
++ Know our "Client Secret" (application private key)
 
 --
 
@@ -230,14 +232,13 @@ The modern command line includes
 ## What data does the API provide?
 
 + Profile data
-    + About ORCID access and control
+    + (ORCID access and control information)
 + Biographical data
-    + Related data like education the ORCID holder volunteers
-+ Works data &#8656; This is what we want for our biblographic list
-    + Publications list
+    + (e.g. education and other info the ORCID holder volunteered)
++ Works data &#8656; This is what we want 
+    + (Publications list)
 
 --
-
 
 # Getting our data
 
@@ -245,7 +246,8 @@ The modern command line includes
 
 + save our "Client ID" and "Client Secret" in our environment
 + authenticate and get a "access token"
-+ query for our data
+    + save the auth token in our environment
++ run a curl query 
 + saving the result 
 
 --
@@ -257,9 +259,12 @@ scripts later we save the client id and secret in our
 shell environment (this is destoryed when we exit the shell)
 
 ```shell
-    export ORCID_CLIENT_ID=YOUR-CLIENT-ID-GOES-HERE
-    export ORCID_CLIENT_SECRET=YOUR-CLIENT-SECRET-GOES-HERE
+    export ORCID_CLIENT_ID=APP-NPXKK6HFN6TJ4YYI
+    export ORCID_CLIENT_SECRET=060c36f2-cce2-4f74-bde0-a17d8bb30a97
 ```
+
+**client id: APP-NPXKK6HFN6TJ4YYI and secret: 060c36f2-cce2-4f74-bde0-a17d8bb30a97
+are an example from http://members.orcid.org/api/tutorial-retrieve-orcid-id**
 
 --
 
@@ -274,14 +279,15 @@ shell environment (this is destoryed when we exit the shell)
          "https://pub.orcid.org/oauth/token"
 ```
 
-+ Note the URL and how we pass our client id and secret
 + This should return a JSON blob with our access token 
 
 ```json
-    {"access_token":"ACCESS_TOKEN_WOULD_BE_HERE","token_type":"bearer","refresh_token":"A_REFRESH_TOKEN_IS_HERE","expires_in":631138518,"scope":"/read-public","orcid":null}
+    {"access_token":"ACCESS_TOKEN_WOULD_BE_HERE",
+    "token_type":"bearer","refresh_token":"A_REFRESH_TOKEN_IS_HERE",
+    "expires_in":631138518,"scope":"/read-public","orcid":null}
 ```
 
-See [scripts/api-login.bash](scripts/api-login.bash.txt) for a scripted version
++ Notice the URL and how we pass our client id and secret
 
 --
 
@@ -292,16 +298,16 @@ The access token is a really long alphanumeric string with dashes.
 + copy that to your clipboard and paste into a new environment variable
 
 ```shell
-    export ORCID_ACCESS_TOKEN=ORCID-ACCESS-TOKEN-GOES-HERE
+    export ORCID_ACCESS_TOKEN=89f0181c-168b-4d7d-831c-1fdda2d7bbbb
 ```
 
 Now we can start querying the API for data
 
+**access token: 89f0181c-168b-4d7d-831c-1fdda2d7bbbb is an example only, it was from http://members.orcid.org/api/tutorial-retrieve-orcid-id**
+
 --
 
 # Using the auth token to access API data
-
-
 
 ```shell
     curl -L -H "Content-Type: application/json" \
@@ -333,11 +339,10 @@ Now we can start querying the API for data
            "name=text:Donna Wrublewski" 
            "orcid=text:0000-0003-0248-0813"
            "works=example.json" \
-           page-pubs.tmpl \
-           > wrublewski-pubs.html
+           page-pubs.tmpl > wrublewski-pubs.html
 ```
 
-See [wrublewski-pubs.html](wrublewski-pubs.html).
+See [wrublewski-pubs-demo.html](wrublewski-pubs-demo.html).
 
 --
 
@@ -351,11 +356,32 @@ See [wrublewski-pubs.html](wrublewski-pubs.html).
         + [Retrieving ORCID id](https://members.orcid.org/api/tutorial-retrieve-orcid-id)
         + [Retrieving Public Data](https://members.orcid.org/api/tutorial-retrieve-data-using-public-api)
         + [Using the search API](https://members.orcid.org/api/tutorial-searching-data-using-api)
+    + [Code Samples page](http://members.orcid.org/api/code-examples)
+
+-- 
+
+## Tools used
+
++ Web browser
++ Bash
++ curl
++ JSONView (browser plugin) and jq (for pretty printing JSON)
++ mkpage (to render the JSON into a web page)
 
 --
-# Case Study (data assembly)
 
-(Check the list of article titles from our colleague and see what is open access)
+
+# Another Story
+
+Problem:
+
++ See which of Donna's articles are in open access journals
+
+Solution:
+
++ Another web API [doaj](https://doaj.org)
+
+--
 
 ## DOAJ API finding Open Access Journals
 

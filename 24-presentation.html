@@ -10,25 +10,18 @@
 <a id="next-slide" rel="nav" href="25-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Authenticating with the API</h1>
+   <section><h1>Saving our Client ID/Secret</h1>
 
-<pre><code class="language-shell">    curl -L -H &quot;Accept: application/json&quot; \
-         -d &quot;client_id=$ORCID_CLIENT_ID&quot; \
-         -d &quot;client_secret=$ORCID_CLIENT_SECRET&quot; \
-         -d &quot;scope=/read-public&quot; \
-         -d &quot;grant_type=client_credentials&quot; \
-         &quot;https://pub.orcid.org/oauth/token&quot;
+<p>To save typing and avoid hard coding secrets in our
+scripts later we save the client id and secret in our
+shell environment (this is destoryed when we exit the shell)</p>
+
+<pre><code class="language-shell">    export ORCID_CLIENT_ID=APP-NPXKK6HFN6TJ4YYI
+    export ORCID_CLIENT_SECRET=060c36f2-cce2-4f74-bde0-a17d8bb30a97
 </code></pre>
 
-<ul>
-<li>Note the URL and how we pass our client id and secret</li>
-<li>This should return a JSON blob with our access token</li>
-</ul>
-
-<pre><code class="language-json">    {&quot;access_token&quot;:&quot;ACCESS_TOKEN_WOULD_BE_HERE&quot;,&quot;token_type&quot;:&quot;bearer&quot;,&quot;refresh_token&quot;:&quot;A_REFRESH_TOKEN_IS_HERE&quot;,&quot;expires_in&quot;:631138518,&quot;scope&quot;:&quot;/read-public&quot;,&quot;orcid&quot;:null}
-</code></pre>
-
-<p>See <a href="scripts/api-login.bash.txt">scripts/api-login.bash</a> for a scripted version</p>
+<p><strong>client id: APP-NPXKK6HFN6TJ4YYI and secret: 060c36f2-cce2-4f74-bde0-a17d8bb30a97
+are an example from <a href="http://members.orcid.org/api/tutorial-retrieve-orcid-id">http://members.orcid.org/api/tutorial-retrieve-orcid-id</a></strong></p>
 </section>
 
    <footer>
