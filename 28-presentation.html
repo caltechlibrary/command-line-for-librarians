@@ -10,26 +10,22 @@
 <a id="next-slide" rel="nav" href="29-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Case Study (data assembly)</h1>
-
-<p>(Check the list of article titles from our colleague and see what is open access)</p>
-
-<h2>DOAJ API finding Open Access Journals</h2>
+   <section><h1>Creating a webpage with <em>mkpage</em></h1>
 
 <ul>
-<li>Problem
-
-<ul>
-<li>Assemble a list of Open Access articles by keyword, by author, by title</li>
-<li>generate reports, list of links, or indexes for searching</li>
-</ul></li>
-<li>Steps
-
-<ul>
-<li>Identify the field you are searching on (simple query example)</li>
-<li>Identify the data path to the field (e.g. bibjson.title.exact)</li>
-</ul></li>
+<li><a href="https://githbub.com/caltechlibrary/mkpage/releases/latest">mkpage</a> is a single page template engine</li>
+<li><a href="page.tmpl">A simple HTML template</a></li>
 </ul>
+
+<pre><code class="language-shell">    mkpage &quot;title=text:Publications List&quot; \
+           &quot;name=text:Donna Wrublewski&quot; 
+           &quot;orcid=text:0000-0003-0248-0813&quot;
+           &quot;works=example.json&quot; \
+           page-pubs.tmpl \
+           &gt; wrublewski-pubs.html
+</code></pre>
+
+<p>See <a href="Wrublewski-pubs.html">Wrublewski-pubs.html</a>.</p>
 </section>
 
    <footer>

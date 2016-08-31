@@ -1,6 +1,3 @@
-{{define "orcidProfile"}}orcid-profile{{end}}
-{{define "orcidActivities"}}orcid-activities{{end}}
-{{define "orcidWorks"}}orcid-works{{end}}
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,11 +15,25 @@
 <h2>{{ .name }}</h2>
 {{with .orcid}}ORCID: {{- . }}{{end}}
 
-<pre>
-{{range  .works.$orcidProfile }}
-    {{.}}
+<ul>
+{{range $orcidWork := (index .works "orcid-profile" "orcid-activities" "orcid-works" "orcid-work") }}
+    <li>
+        {{- if (index $orcidWork "url") -}}
+        <a href="{{- with (index $orcidWork "url" "value")}}{{ . }}{{end -}}">{{with (index $orcidWork "work-title" "title" "value")}}{{ . }}{{end}}</a>
+        {{else}}
+        {{- with (index $orcidWork "work-title" "title" "value")}}{{ . }}{{end -}}
+        {{- end -}}
+        {{with (index $orcidWork "journal-title")}}, {{ .value }}{{end -}}
+        {{with (index $orcidWork "publication-date" "year" "value")}}({{ . }}){{end -}}
+        {{- if (index $orcidWork "work-contributors") -}}; 
+            {{- range $i, $contributor := (index $orcidWork "work-contributors" "contributor") -}}
+                {{- if gt $i 0}} and {{end -}}
+                {{with (index $contributor "credit-name" "value")}} {{ . }}{{end}}
+            {{- end -}}
+        {{end -}}
+    </li>
 {{end}}
-</pre>
+</ul>
 
 </section>
 

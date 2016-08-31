@@ -250,12 +250,13 @@ The modern command line includes
 ## Accessing ORCID API with cURL
 
 + save our "Client ID" and "Client Secret" in our environment
-+ sort out our cURL command with appriate header and URL
-+ saving the result
++ authenticate and get a "access token"
++ query for our data
++ saving the result 
 
 --
 
-# Saving our environment
+# Saving our Client ID/Secret
 
 To save typing and avoid hard coding secrets in our
 scripts later we save the client id and secret in our
@@ -288,7 +289,7 @@ shell environment (this is destoryed when we exit the shell)
 
 See [scripts/api-login.bash](scripts/api-login.bash.txt) for a scripted version
 
----
+--
 
 # Save the access token for re-use
 
@@ -342,7 +343,7 @@ Now we can start querying the API for data
            > wrublewski-pubs.html
 ```
 
-See [wrublewsky-pubs.html](wrublewsky-pubs.html).
+See [Wrublewski-pubs.html](Wrublewski-pubs.html).
 
 
 --
