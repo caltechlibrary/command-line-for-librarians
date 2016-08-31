@@ -19,16 +19,16 @@
 {{range $orcidWork := (index .works "orcid-profile" "orcid-activities" "orcid-works" "orcid-work") }}
     <li>
         {{- if (index $orcidWork "url") -}}
-        <a href="{{- with (index $orcidWork "url" "value")}}{{ . }}{{end -}}">{{with (index $orcidWork "work-title" "title" "value")}}{{ . }}{{end}}</a>
+        <a href="{{- with (index $orcidWork "url")}}{{ .value }}{{end -}}">{{with (index $orcidWork "work-title" "title" "value")}}{{ . }}{{end}}</a>
         {{else}}
-        {{- with (index $orcidWork "work-title" "title" "value")}}{{ . }}{{end -}}
+        {{- with (index $orcidWork "work-title" "title")}}{{ .value }}{{end -}}
         {{- end -}}
         {{with (index $orcidWork "journal-title")}}, {{ .value }}{{end -}}
-        {{with (index $orcidWork "publication-date" "year" "value")}}({{ . }}){{end -}}
+        {{with (index $orcidWork "publication-date" "year")}}({{ .value }}){{end -}}
         {{- if (index $orcidWork "work-contributors") -}}; 
             {{- range $i, $contributor := (index $orcidWork "work-contributors" "contributor") -}}
                 {{- if gt $i 0}} and {{end -}}
-                {{with (index $contributor "credit-name" "value")}} {{ . }}{{end}}
+                {{with (index $contributor "credit-name")}} {{ .value }}{{end}}
             {{- end -}}
         {{end -}}
     </li>

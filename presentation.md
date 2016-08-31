@@ -92,10 +92,10 @@ The modern command line includes
 
 ## The old favorites of Unix
 
-+ *curl* is the jackknife to access
++ *curl* is the jackknife for web data access
 + *cat* and *more*
 + *cut*, *sed* and *grep*
-+ *xpath* to filter XML
++ your favorite unix text editor
 
 --
 
@@ -103,11 +103,17 @@ The modern command line includes
 
 ## Some New tools
 
-+ [jq](https://github.com/stedolan/jq) -
-    + *jq* to filter for JSON
-+ [mkpage](https://caltechlibrary.github.io/mkpage) - easily assemble webpages from a simple templates
-+ [md2slides](https://caltechlibrary.github.io/md2slides) - how this presentation was render
-+ [ws](https://caltechlibrary.github.io/ws) - a simple web server for development
++ [jq](https://github.com/stedolan/jq) is a JSON filter and pretty printer
++ [mkpage](https://caltechlibrary.github.io/mkpage) - easily assemble webpages from a simple golang template
+
+--
+
+# What's in the toolbox?
+
+## A browser plugin
+
++ [JSONView](https://jsonview.com/) - a JSON viewer for your web browser
+    + supports Firefox and Chrome
 
 --
 
@@ -232,18 +238,6 @@ The modern command line includes
 
 --
 
-# ORCID API 
-
-## For your reference
-
-+ Setup ORCID API Access if you don't have it already
-    + http://members.orcid.org/api/accessing-public-api
-    + Tutorials
-        + [Retrieving ORCID id](https://members.orcid.org/api/tutorial-retrieve-orcid-id)
-        + [Retrieving Public Data](https://members.orcid.org/api/tutorial-retrieve-data-using-public-api)
-        + [Using the search API](https://members.orcid.org/api/tutorial-searching-data-using-api)
-
---
 
 # Getting our data
 
@@ -343,8 +337,20 @@ Now we can start querying the API for data
            > wrublewski-pubs.html
 ```
 
-See [Wrublewski-pubs.html](Wrublewski-pubs.html).
+See [wrublewski-pubs.html](wrublewski-pubs.html).
 
+--
+
+# ORCID API 
+
+## For your reference
+
++ Setup ORCID API Access if you don't have it already
+    + http://members.orcid.org/api/accessing-public-api
+    + Tutorials
+        + [Retrieving ORCID id](https://members.orcid.org/api/tutorial-retrieve-orcid-id)
+        + [Retrieving Public Data](https://members.orcid.org/api/tutorial-retrieve-data-using-public-api)
+        + [Using the search API](https://members.orcid.org/api/tutorial-searching-data-using-api)
 
 --
 # Case Study (data assembly)

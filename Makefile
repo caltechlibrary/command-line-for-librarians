@@ -4,6 +4,7 @@
 PRESENTATION_NAME = command-line-for-librarians
 
 build: 
+	git add *.html
 	./mk-website.bash
 
 status:
