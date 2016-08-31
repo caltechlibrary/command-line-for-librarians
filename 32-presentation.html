@@ -10,22 +10,42 @@
 <a id="next-slide" rel="nav" href="33-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h2>DOAJ API finding Open Access Journals</h2>
+   <section><h1>DOAJ finding Open Access Journals</h1>
 
 <ul>
 <li>Problem
 
 <ul>
-<li>Assemble a list of Open Access articles by keyword, by author, by title</li>
-<li>generate reports, list of links, or indexes for searching</li>
+<li>For  list of journal titles and ISSNs
+
+<ul>
+<li>check if they are listed in DOAJ</li>
+<li>collect additional metadata about them</li>
+</ul></li>
+</ul></li>
+<li>Requirements
+
+<ul>
+<li>Access to the <a href="https://doaj.org/api/v1/docs">DOAJ API</a>
+
+<ul>
+<li>The public read API is sufficient for our needs</li>
+</ul></li>
 </ul></li>
 <li>Steps
 
 <ul>
-<li>Identify the field you are searching on (simple query example)</li>
-<li>Identify the data path to the field (e.g. bibjson.title.exact)</li>
+<li>generate a list of Journal names and identifiers from our bib list
+
+<ul>
+<li><a href="https://stedolan.github.io/jq">jq</a> is useful for this type of JSON data filtering</li>
+</ul></li>
+<li>For each journal query the DOAJ API</li>
+<li>Save the results</li>
 </ul></li>
 </ul>
+
+<p>Our output will be a CSV (comma separated value) document.</p>
 </section>
 
    <footer>

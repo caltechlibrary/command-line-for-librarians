@@ -10,13 +10,41 @@
 <a id="next-slide" rel="nav" href="37-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>The take away</h1>
+   <section><h1>More experimentation</h1>
 
-<ul>
-<li>The web is more than the web browser</li>
-<li>The command line is more then a character user interface and repl</li>
-<li>They are tools in a tool box for solving problems</li>
-</ul>
+<p>After much more experimentation and looking up the <em>jq</em> <a href="https://stedolan.github.io/jq">documentation</a> we came with this
+expression to generate a tab delimited file with work type, journal title, id type and id</p>
+
+<pre><code>    jq '.[&quot;orcid-profile&quot;][&quot;orcid-activities&quot;][&quot;orcid-works&quot;][&quot;orcid-work&quot;][]' example.json |\
+      jq '{workType: .[&quot;work-type&quot;], journalTitle: .[&quot;journal-title&quot;].value, id: .[&quot;work-external-identifiers&quot;][&quot;work-external-identifier&quot;][][&quot;work-external-identifier-id&quot;].value, idType: .[&quot;work-external-identifiers&quot;][&quot;work-external-identifier&quot;][][&quot;work-external-identifier-type&quot;]}' |\
+        jq -r '. | [.workType, .journalTitle, .idType, .id] | join(&quot;\t&quot;)' &gt; example.tab
+</code></pre>
+
+<p>See <a href="example.tab">example.tab</a></p>
+
+<pre><code class="language-text">    JOURNAL_ARTICLE		DOI	10.5062/F42R3PMS
+    JOURNAL_ARTICLE		EID	10.5062/F42R3PMS
+    JOURNAL_ARTICLE		DOI	2-s2.0-84858766300
+    JOURNAL_ARTICLE		EID	2-s2.0-84858766300
+    JOURNAL_ARTICLE	Science &amp; Technology Libraries	DOI	10.1080/0194262x.2015.1135304
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    OTHER	Chemical Information for Chemists	DOI	10.1039/9781782620655-00206
+    OTHER	Chemical Information for Chemists	ISBN	10.1039/9781782620655-00206
+    OTHER	Chemical Information for Chemists	DOI	978-1-84973-551-3
+    OTHER	Chemical Information for Chemists	ISBN	978-1-84973-551-3
+    JOURNAL_ARTICLE		DOI	10.5062/F42R3PMS
+    JOURNAL_ARTICLE		EID	10.5062/F42R3PMS
+    JOURNAL_ARTICLE		DOI	2-s2.0-84858766300
+    JOURNAL_ARTICLE		EID	2-s2.0-84858766300
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    CONFERENCE_PAPER		EID	2-s2.0-2442514124
+</code></pre>
 </section>
 
    <footer>

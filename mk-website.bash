@@ -15,6 +15,8 @@ function makePage () {
 
 # Presentation slides
 md2slides -css css/slides.css -template slide.tmpl presentation.md 
+# Add any new .html files to repo
+git add *.html
 
 # index.html
 makePage README.md nav.md index.html

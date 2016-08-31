@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link href="css/slides.css" rel="stylesheet" />
+</head>
+<body>
+   <nav>
+<a id="start-slide" rel="nav" href="00-presentation.html" title="Return to start of presentation">Start</a>
+<a id="prev-slide" rel="nav" href="37-presentation.html" title="Previous slide">Prev</a>
+<a id="next-slide" rel="nav" href="39-presentation.html" title="Next slide">Next</a>
+   </nav>
+
+   <section><h1>Discovering our data source</h1>
+
+<ul>
+<li><a href="https://doaj.org/api/v1/docs#!/Search/get_api_v1_search_journals_search_query">doaj</a> provides a sandbox
+
+<ul>
+<li>this link provides a playground which generates example <em>curl</em> command</li>
+<li>the field we want to match is <code>bibjson.title</code></li>
+</ul></li>
+</ul>
+
+<p>Testing the suggested <em>curl</em></p>
+
+<pre><code class="language-shell">    curl -X GET --header &quot;Accept: application/json&quot; \
+        &quot;https://doaj.org/api/v1/search/journals/bibjson.title%3AAbstracts%20of%20Papers of the American Chemical Society
+</code></pre>
+</section>
+
+   <footer>
+   </footer>
+   <script type="text/javascript" src="js/keyboard-nav.js"></script>
+</body>
+</html>

@@ -375,25 +375,150 @@ See [wrublewski-pubs-demo.html](wrublewski-pubs-demo.html).
 
 Problem:
 
-+ See which of Donna's articles are in open access journals
++ We have a list of journals titles and ISSN, are they open access journals?
++ What are their call numbers?
 
-Solution:
+Data Sources:
 
-+ Another web API [doaj](https://doaj.org)
++ [DOAJ](https://doaj.org) - Directory of Open Access Journals
++ [OCLS](https://ocls.org) - Online Computer Library Center
+    + has call numbers
 
 --
 
-## DOAJ API finding Open Access Journals
+# DOAJ finding Open Access Journals
 
 + Problem
-    + Assemble a list of Open Access articles by keyword, by author, by title
-    + generate reports, list of links, or indexes for searching
+    + For  list of journal titles and ISSNs 
+        + check if they are listed in DOAJ
+        + collect additional metadata about them
++ Requirements
+    + Access to the [DOAJ API](https://doaj.org/api/v1/docs)
+       + The public read API is sufficient for our needs
 + Steps
-    + Identify the field you are searching on (simple query example)
-    + Identify the data path to the field (e.g. bibjson.title.exact)
+    + generate a list of Journal names and identifiers from our bib list
+        + [jq](https://stedolan.github.io/jq) is useful for this type of JSON data filtering
+    + For each journal query the DOAJ API
+    + Save the results
+
+Our output will be a CSV (comma separated value) document.
 
 --
 
+# Tools needed
+
++ Bash (initially command line, later we'll create a script)
++ *curl* to fetch our data
++ *jq* to filter our results and produce CSV output
+
+--
+
+# Creating our list of journal titles
+
+*jq* makes it very easy to filter the complex output from the ORCID api into
+a simple list of journal titles. This is done by a dot notation path.
+
+```shell
+    jq '.["orcid-profile"]["orcid-activities"]["orcid-works"]["orcid-work"][]["journal-title"].value' example.json
+```
+
+Initial output
+
+```text
+    null
+    "Science & Technology Libraries"
+    "Abstracts of Papers of the American Chemical Society"
+    "Chemical Information for Chemists"
+    null
+    "Abstracts of Papers of the American Chemical Society"
+    "Abstracts of Papers of the American Chemical Society"
+    "Abstracts of Papers of the American Chemical Society"
+    "Abstracts of Papers of the American Chemical Society"
+    "Abstracts of Papers of the American Chemical Society"
+    "Abstracts of Papers of the American Chemical Society"
+    "Abstracts of Papers of the American Chemical Society"
+    null
+```
+
+Piping the output through `grep -v null | sort -u ` cleans up the list easily
+
+```shell
+ jq '.["orcid-profile"]["orcid-activities"]["orcid-works"]["orcid-work"][]["journal-title"].value' example.json | grep -v "null" | sort -u
+```
+
+--
+Final list to check
+
+```text
+    "Abstracts of Papers of the American Chemical Society"
+    "Chemical Information for Chemists"
+    "Science & Technology Libraries"
+```
+--
+
+# More experimentation
+
+After much more experimentation and looking up the *jq* [documentation](https://stedolan.github.io/jq) we came with this
+expression to generate a tab delimited file with work type, journal title, id type and id
+
+```
+    jq '.["orcid-profile"]["orcid-activities"]["orcid-works"]["orcid-work"][]' example.json |\
+      jq '{workType: .["work-type"], journalTitle: .["journal-title"].value, id: .["work-external-identifiers"]["work-external-identifier"][]["work-external-identifier-id"].value, idType: .["work-external-identifiers"]["work-external-identifier"][]["work-external-identifier-type"]}' |\
+        jq -r '. | [.workType, .journalTitle, .idType, .id] | join("\t")' > example.tab
+```
+
+See [example.tab](example.tab)
+
+```text
+    JOURNAL_ARTICLE		DOI	10.5062/F42R3PMS
+    JOURNAL_ARTICLE		EID	10.5062/F42R3PMS
+    JOURNAL_ARTICLE		DOI	2-s2.0-84858766300
+    JOURNAL_ARTICLE		EID	2-s2.0-84858766300
+    JOURNAL_ARTICLE	Science & Technology Libraries	DOI	10.1080/0194262x.2015.1135304
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    OTHER	Chemical Information for Chemists	DOI	10.1039/9781782620655-00206
+    OTHER	Chemical Information for Chemists	ISBN	10.1039/9781782620655-00206
+    OTHER	Chemical Information for Chemists	DOI	978-1-84973-551-3
+    OTHER	Chemical Information for Chemists	ISBN	978-1-84973-551-3
+    JOURNAL_ARTICLE		DOI	10.5062/F42R3PMS
+    JOURNAL_ARTICLE		EID	10.5062/F42R3PMS
+    JOURNAL_ARTICLE		DOI	2-s2.0-84858766300
+    JOURNAL_ARTICLE		EID	2-s2.0-84858766300
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
+    CONFERENCE_PAPER		EID	2-s2.0-2442514124
+```
+
+--
+
+# How do we query for DOI, ISBN or ISSN?
+
+1. Go to the [DOAJ](https://doaj.org/api/v1/docs#!/Search/get_api_v1_search_journals_search_query) API playground
+2. Review the JSON scheme and see which field you need to query on
+3. Our url should look like
+
+--
+
+# Discovering our data source
+
++ [doaj](https://doaj.org/api/v1/docs#!/Search/get_api_v1_search_journals_search_query) provides a sandbox
+    + this link provides a playground which generates example *curl* command
+    + the field we want to match is `bibjson.title`
+
+Testing the suggested *curl*
+
+```shell
+    curl -X GET --header "Accept: application/json" \
+        "https://doaj.org/api/v1/search/journals/bibjson.title%3AAbstracts%20of%20Papers of the American Chemical Society
+```
+
+
+--
 
 # Case Study (data source, open web API)
 
