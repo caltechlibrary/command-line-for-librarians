@@ -14,7 +14,11 @@ About: [presentation](index.html)
 
 --
 
-# Overview
+# This big picture
+
++ The web is more than the web browser
++ The command line is more then a character user interface and repl
++ The web is a conversation, software is a conversation
 
 --
 
@@ -22,7 +26,9 @@ About: [presentation](index.html)
 
 + the web is webpages
 + the web interlinked data
-+ the web web is available on the command line
+   + JSON, JSON-LD, XML, GeoJSON, BibTeX, BibFrame, Marc Records ...
++ the web is available on the command line
+    + curl, wget, mkpage
 
 --
 
@@ -30,7 +36,7 @@ About: [presentation](index.html)
 
 + allows you to explore content in other formats
 + mix and match data and sources
-+ it allows you to automate processes
++ it allows you to experiment and automate processes
 
 --
 
@@ -40,36 +46,51 @@ About: [presentation](index.html)
 + It provides a command line interface to programs
 + It can be used to write small programs known as "scripts"
 + It is the default shell for many Linux systems as well as Mac OS X
-+ It also is available for Windows 10 Anniversary Edition
++ It also is available for Windows 
+    + Git Core install, Bash for Ubuntu for Windows
 
 --
 
-# Why do I care?
+# Why care?
 
-+ Bash lets you automate repetitive tasks
-+ It helps you
++ Bash lets you automate repetitive tasks easily
+    + type a command see if it works
+    + scroll back through a command history and cherry pick useful commands
 + The command line no longer lives in isolation from the graphic user interface
+    + You can generally cut and paste from a graphical app to into the shell
+    + You can copy text from the command line and paste into a graphical app
 
 
 --
 
-# it's all about the metadata
+# Why this talk?
+
+## It's all about the metadata
 
 + Librarians are interested in Metadata
 + Often it is incomplete
-+ but often combining it one source with another lets us get a big picture
++ But there are lots of API exposing metadata through the web
++ Often combining it one source with another lets us get a big picture
 
 --
 
 # Basics of command line
 
+The modern command line includes
+
 + keyboard navigation
-+ autocomplete is your friend
-+ command history and your road to scripts
+    + arrow keys, delete keys, cut/paste
++ autocomplete (this is really your friend)
+    + In Bash tab is activates auto complete for some commands and paths
++ command history which you can scroll back through time
+    + history 
+    + up arrow (for single command scroll back)
 
 --
 
-# Old Unix tools
+# What's in the toolbox?
+
+## The old favorites of Unix
 
 + *curl* is the jackknife to access
 + *cat* and *more*
@@ -78,25 +99,100 @@ About: [presentation](index.html)
 
 --
 
-# Some New tools
+# What's in the toolbox?
+
+## Some New tools
 
 + [jq](https://github.com/stedolan/jq) -
     + *jq* to filter for JSON
-+ mkpage - easily assemble webpages from a simple templates
-+ md2slides - how this presentation was render
-+ ws - a simple web server for development
++ [mkpage](https://caltechlibrary.github.io/mkpage) - easily assemble webpages from a simple templates
++ [md2slides](https://caltechlibrary.github.io/md2slides) - how this presentation was render
++ [ws](https://caltechlibrary.github.io/ws) - a simple web server for development
 
 --
 
 # Scripting is automation
 
-+ putting it together from experiments and history
-+ simple scripts (list of commands)
-+ complicated scripts (decisions and functions)
++ Simple automatation is just a list of commands
+    + Copy what you need from your history
+    j+ Save in a text file simple scripts (list of commands)
++ You can also do complex things
+    + Decisions 
+    + Build functions or use other scripts you've written too
 
 --
 
-# Case Study (api keys, mostly open web API)
+# A User Story 
+
++ A faculty wants to include their publications in a webpage
++ The instution maintains a repository of faculty/researcher's publications
++ They've dropped by to talk about approach and get included in our repository
+
+--
+
+# Problem approach
+
++ Collect some background info
++ Identify systems that may have the information we want
++ Query them saving the resulting data (preferrable as JSON)
++ Munging the data
++ Render a webpage
+
+--
+
+# Our discovery
+
++ Our colleague has an "ORCID id"
+    + See [http://orcid.org](https://orcid.org)
++ ORCID is an unique identifier for authors and researchers
++ Many publications support ORCID, some will likely require it in the future
++ ORCID has an API
+   + https://orcid.org/organizations/integrators/API 
+
+
+--
+
+# ORCID API
+
++ The ORCID API has three types access
+    + Public
+    + Member
+    + Sandbox
+
+--
+
+# ORCID API
+
++ The public API has some limitations
++ But it's enough for our purposes
+    + See https://orcid.org/organizations/integrators/API
+
+--
+
+# ORCID API
+
+## How do we get started?
+
++ We need to have an ORCID id ourselves
++ Once we have our own ORCID we can get a developer key
++ Once you have the developer key you can access the API
+
+--
+
+# ORCID API
+
+## What data does the API provide?
+
++ Profile data
+    + About ORCID access and control
++ Biographical data
+    + Related data like education
++ Works data &#8656; This is what we want for our biblographic list
+    + Publications list
+
+--
+
+# ORCID API
 
 (see https://rsdoiel.github.io/bash-curl-and-jq-presentation/14-presentation.html for similar content)
 
@@ -193,5 +289,13 @@ Applying the techniques of the open web
     + Versions
         + Raw data
         + Clean file
+
+--
+
+# The take away
+
++ The web is more than the web browser
++ The command line is more then a character user interface and repl
++ They are tools in a tool box for solving problems
 
 --
