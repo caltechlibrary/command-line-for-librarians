@@ -121,7 +121,7 @@ The modern command line includes
 
 + Simple automatation is just a list of commands
     + Copy what you need from your history
-    j+ Save in a text file simple scripts (list of commands)
+    + Save in a text file simple scripts (list of commands)
 + You can also do complex things
     + Decisions 
     + Build functions or use other scripts you've written too
