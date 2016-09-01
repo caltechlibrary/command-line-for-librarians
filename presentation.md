@@ -400,21 +400,12 @@ Data Sources:
 + *Open Refine* to clean our ata
 
 --
-
-# Our Next Story
-
-## Transforming our original data
-
-Sometimes it is easier to play with data in a tabluar format. Let's convert our
-ORCID JSON data into a simple table. We can do this with *jq*.
-
---
  
 # Our Next Story
 
 ## *jq* demo
 
-### Creating our list of journal titles
+### Creating our initial list of journal titles
 
 *jq* makes it very easy to filter the complex output from the ORCID api into
 a simple list of journal titles. This is done by a dot notation path.
