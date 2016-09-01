@@ -5,7 +5,7 @@
 ## Presenters
 
 + Heather Wilson
-+ Robert Doiel
++ [Robert Doiel](https://rsdoiel.github.io)
 
 ## Abstract
 
