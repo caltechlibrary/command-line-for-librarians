@@ -69,6 +69,14 @@ h3 {
     font-size: 1.36;
 }
 
+h1 em, h2 em, h3 em {
+    font-style: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    color: red;
+    font-weight: bold;
+}
+
 em {
     color: red;
     font-style: oblique;
