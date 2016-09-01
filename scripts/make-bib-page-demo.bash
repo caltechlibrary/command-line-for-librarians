@@ -60,5 +60,5 @@ if [ -f example.json ]; then
        "name=text:Donna Wrublewski" \
        "orcid=text:0000-0003-0248-0813" \
        "works=example.json" \
-       page-pubs.tmpl > wrublewski-pubs.html
+       page-pubs.tmpl > wrublewski-pubs-demo.html
 fi
