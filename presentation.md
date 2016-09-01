@@ -610,6 +610,6 @@ Applying the techniques of the open web
 
 Download presentation at 
 
-    https://github.com/caltechlibrary/command-line-for-librarians/releases/latest
+https://github.com/caltechlibrary/command-line-for-librarians/releases/latest
 
 --
