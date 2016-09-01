@@ -505,11 +505,13 @@ This is OK but some of this is easier in other tools (e.g. Open Refine).
 
 --
 
-# How do we query for DOI, ISBN or ISSN?
+# How do we query DOAJ for Title or ISSN?
 
 1. Go to the [DOAJ](https://doaj.org/api/v1/docs#!/Search/get_api_v1_search_journals_search_query) API playground
 2. Review the JSON scheme and see which field you need to query on
-3. Our url should look like
+3. Try out some queries by hand for individual entries
+4. Build up a Bash script that run the querries and accumulate the results
+5. Cleanup, depublicate in Open Refine
 
 --
 
