@@ -12,10 +12,37 @@
 
    <section><h1>Our Next Story</h1>
 
-<h2>Transforming our original data</h2>
+<h2><em>jq</em> demo</h2>
 
-<p>Sometimes it is easier to play with data in a tabluar format. Let&rsquo;s convert our
-ORCID JSON data into a simple table. We can do this with <em>jq</em>.</p>
+<h3>Creating our initial list of journal titles</h3>
+
+<p><em>jq</em> makes it very easy to filter the complex output from the ORCID api into
+a simple list of journal titles. This is done by a dot notation path.</p>
+
+<pre><code class="language-shell">    jq '.[&quot;orcid-profile&quot;][&quot;orcid-activities&quot;][&quot;orcid-works&quot;][&quot;orcid-work&quot;][][&quot;journal-title&quot;].value' example.json
+</code></pre>
+
+<p>Initial output</p>
+
+<pre><code class="language-text">    null
+    &quot;Science &amp; Technology Libraries&quot;
+    &quot;Abstracts of Papers of the American Chemical Society&quot;
+    &quot;Chemical Information for Chemists&quot;
+    null
+    &quot;Abstracts of Papers of the American Chemical Society&quot;
+    &quot;Abstracts of Papers of the American Chemical Society&quot;
+    &quot;Abstracts of Papers of the American Chemical Society&quot;
+    &quot;Abstracts of Papers of the American Chemical Society&quot;
+    &quot;Abstracts of Papers of the American Chemical Society&quot;
+    &quot;Abstracts of Papers of the American Chemical Society&quot;
+    &quot;Abstracts of Papers of the American Chemical Society&quot;
+    null
+</code></pre>
+
+<p>Piping the output through <code>grep -v null | sort -u</code> cleans up the list easily</p>
+
+<pre><code class="language-shell">    jq '.[&quot;orcid-profile&quot;][&quot;orcid-activities&quot;][&quot;orcid-works&quot;][&quot;orcid-work&quot;][][&quot;journal-title&quot;].value' example.json | grep -v &quot;null&quot; | sort -u
+</code></pre>
 </section>
 
    <footer>

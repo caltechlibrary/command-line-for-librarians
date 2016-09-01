@@ -12,46 +12,18 @@
 
    <section><h1>Our Next Story</h1>
 
-<h2><em>jq</em> demo</h2>
+<h2>How do we query OCLC?</h2>
 
-<h3>What about adding more columns?</h3>
+<ol>
+<li>Go to the <a href="http://classify.oclc.org/classify2/api_docs/classify.html">OCLC Research Experimental Center</a></li>
+<li>Try some values we discovered in <a href="example.csv">example.csv</a> what combination works
 
-<p>After much more experimentation and looking closely at the <em>jq</em> <a href="https://stedolan.github.io/jq">documentation</a>
-you can build up a list of filters that can transform your data. I found it easer to break things
-up and pipe through different instances of <em>jq</em>.</p>
-
-<pre><code class="language-shell">    jq '.[&quot;orcid-profile&quot;][&quot;orcid-activities&quot;][&quot;orcid-works&quot;][&quot;orcid-work&quot;][]' example.json |\
-      jq '{workType: .[&quot;work-type&quot;], journalTitle: .[&quot;journal-title&quot;].value, id: .[&quot;work-external-identifiers&quot;][&quot;work-external-identifier&quot;][][&quot;work-external-identifier-id&quot;].value, idType: .[&quot;work-external-identifiers&quot;][&quot;work-external-identifier&quot;][][&quot;work-external-identifier-type&quot;]}' |\
-        jq -r '. | [.workType, .journalTitle, .idType, .id] | join(&quot;,&quot;)' &gt; example.csv
-</code></pre>
-
-<p>See <a href="example.csv">example.csv</a></p>
-
-<pre><code class="language-text">    JOURNAL_ARTICLE,,DOI,10.5062/F42R3PMS
-    JOURNAL_ARTICLE,,EID,10.5062/F42R3PMS
-    JOURNAL_ARTICLE,,DOI,2-s2.0-84858766300
-    JOURNAL_ARTICLE,,EID,2-s2.0-84858766300
-    JOURNAL_ARTICLE,Science &amp; Technology Libraries,DOI,10.1080/0194262x.2015.1135304
-    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
-    OTHER,Chemical Information for Chemists,DOI,10.1039/9781782620655-00206
-    OTHER,Chemical Information for Chemists,ISBN,10.1039/9781782620655-00206
-    OTHER,Chemical Information for Chemists,DOI,978-1-84973-551-3
-    OTHER,Chemical Information for Chemists,ISBN,978-1-84973-551-3
-    JOURNAL_ARTICLE,,DOI,10.5062/F42R3PMS
-    JOURNAL_ARTICLE,,EID,10.5062/F42R3PMS
-    JOURNAL_ARTICLE,,DOI,2-s2.0-84858766300
-    JOURNAL_ARTICLE,,EID,2-s2.0-84858766300
-    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
-    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
-    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
-    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
-    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
-    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
-    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
-    CONFERENCE_PAPER,,EID,2-s2.0-2442514124
-</code></pre>
-
-<p>This is OK but sometimes it is easier todo this type of transformation in tools like OpenRefine.</p>
+<ul>
+<li>E.g. try using ISSN to get OWI, use OWI to get recommended Call Numbers (ddc, lcc)</li>
+</ul></li>
+<li>After we figure how we want to query, start trying it out in Bash using cURL.</li>
+<li>Build up a Bash script that run the querries and accumulate the results</li>
+</ol>
 </section>
 
    <footer>
