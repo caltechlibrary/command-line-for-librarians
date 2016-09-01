@@ -608,6 +608,7 @@ Applying the techniques of the open web
 + The command line is more then a character user interface and repl
 + They are tools in a tool box for solving problems
 
+<<<<<<< HEAD
 Download this presentation at 
 
     https://github.com/caltechlibrary/command-line-for-librarians/releases/latest
@@ -616,5 +617,8 @@ or
 
     https://caltechlibrary.github.io/command-line-for-librarians
 
+=======
+Download presentation at https://github.com/caltechlibrary/command-line-for-librarians/releases/latest
+>>>>>>> e0cf0b895e379dfee191bdc130b80ac10d5e68e9
 
 --
