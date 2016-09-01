@@ -361,7 +361,7 @@ See [wrublewski-pubs-demo.html](wrublewski-pubs-demo.html).
         + [Using the search API](https://members.orcid.org/api/tutorial-searching-data-using-api)
     + [Code Samples page](http://members.orcid.org/api/code-examples)
 
--- 
+--
 
 ## Tools used
 
@@ -378,7 +378,7 @@ See [wrublewski-pubs-demo.html](wrublewski-pubs-demo.html).
 
 Problem:
 
-+ What are the call numbers for Donna's jounral titles?
++ What are the call numbers for Donna's journal titles?
 
 Data Sources:
 
@@ -606,10 +606,9 @@ Applying the techniques of the open web
 
 + The web is more than the web browser
 + The command line is more then a character user interface and repl
-+ They are tools in a tool box for solving problems
++ They are tools in a toolbox for solving problems
 
 Download presentation at 
 
 https://github.com/caltechlibrary/command-line-for-librarians/releases/latest
 
---
