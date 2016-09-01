@@ -1,12 +1,12 @@
 
 # Command Line for Librarians
 
-## MMWCon 2016
+## [MMWCon](http://mmwcon.org) 2016
 
 + Presenter Heather Wilson
     + Acquisitions and Electronic Resources Librarian
     + California Institute of Technology
-+ Presenter R. S. Doiel
++ Presenter [R. S. Doiel](https://rsdoiel.github.io)
     + Digital Services Programmer, Caltech Library
     + California Institute of Technology
 
