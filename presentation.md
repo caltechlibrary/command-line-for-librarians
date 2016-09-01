@@ -361,7 +361,7 @@ See [wrublewski-pubs-demo.html](wrublewski-pubs-demo.html).
         + [Using the search API](https://members.orcid.org/api/tutorial-searching-data-using-api)
     + [Code Samples page](http://members.orcid.org/api/code-examples)
 
--- 
+--
 
 ## Tools used
 
