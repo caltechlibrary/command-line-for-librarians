@@ -382,7 +382,7 @@ Problem:
 
 Data Sources:
 
-+ [OCLS](https://ocls.org) - Online Computer Library Center
++ [OCLC](https://oclc.org) - Online Computer Library Center
     + has a public [Classify API](http://classify.oclc.org/classify2/api_docs/)
     + has a explorer page for experimentation-- [OCLC Research Experimental Center](http://classify.oclc.org/classify2/api_docs/classify.html)
     + can be search by "stndnbr" (a standard number), oclc, isbn, issn, upc, ident, heading, owi, author, title and summary
