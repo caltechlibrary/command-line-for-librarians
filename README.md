@@ -4,8 +4,8 @@
 
 ## Presenters
 
-+ Heather Wilson, librarian
-+ [Robert Doiel](https://rsdoiel.github.io), developer
++ Heather Wilson, a librarian
++ [Robert Doiel](https://rsdoiel.github.io), a developer
 
 ## Abstract
 
