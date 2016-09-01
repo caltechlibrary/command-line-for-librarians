@@ -15,5 +15,5 @@ The migration from print to more online resources has led to exponentially great
 
 Download presentation at 
 
-    https://github.com/caltechlibrary/command-line-for-librarians/releases/latest
+https://github.com/caltechlibrary/command-line-for-librarians/releases/latest
 
