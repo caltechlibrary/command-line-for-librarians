@@ -612,4 +612,3 @@ Download presentation at
 
 https://github.com/caltechlibrary/command-line-for-librarians/releases/latest
 
---
