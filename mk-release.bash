@@ -13,3 +13,12 @@ done
 find . -type f | grep -E '.md$' | while read FNAME; do
     zip -r $RELEASE_NAME-slides.zip $FNAME
 done
+find . -type f | grep -E '.gif$' | while read FNAME; do
+    zip -r $RELEASE_NAME-slides.zip $FNAME
+done
+find . -type f | grep -E '.png$' | while read FNAME; do
+    zip -r $RELEASE_NAME-slides.zip $FNAME
+done
+find . -type f | grep 'example' | while read FNAME; do
+    zip -r $RELEASE_NAME-slides.zip $FNAME
+done

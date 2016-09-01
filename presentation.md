@@ -263,8 +263,8 @@ shell environment (this is destoryed when we exit the shell)
     export ORCID_CLIENT_SECRET=060c36f2-cce2-4f74-bde0-a17d8bb30a97
 ```
 
-**client id: APP-NPXKK6HFN6TJ4YYI and secret: 060c36f2-cce2-4f74-bde0-a17d8bb30a97
-are an example from http://members.orcid.org/api/tutorial-retrieve-orcid-id**
++ client id: APP-NPXKK6HFN6TJ4YYI and secret: 060c36f2-cce2-4f74-bde0-a17d8bb30a97
+are examples taken from http://members.orcid.org/api/tutorial-retrieve-orcid-id
 
 --
 
@@ -282,12 +282,14 @@ are an example from http://members.orcid.org/api/tutorial-retrieve-orcid-id**
 + This should return a JSON blob with our access token 
 
 ```json
-    {"access_token":"ACCESS_TOKEN_WOULD_BE_HERE",
-    "token_type":"bearer","refresh_token":"A_REFRESH_TOKEN_IS_HERE",
+    {"access_token":"89f0181c-168b-4d7d-831c-1fdda2d7bbbb",
+    "token_type":"bearer","refresh_token":"69e883f6-d84e-4ae6-87f5-ef0044e3e9a7",
     "expires_in":631138518,"scope":"/read-public","orcid":null}
 ```
 
 + Notice the URL and how we pass our client id and secret
++ The access token is: 89f0181c-168b-4d7d-831c-1fdda2d7bbbb
+    + these change, this is just a sample of what it looks like
 
 --
 
@@ -303,7 +305,8 @@ The access token is a really long alphanumeric string with dashes.
 
 Now we can start querying the API for data
 
-**access token: 89f0181c-168b-4d7d-831c-1fdda2d7bbbb is an example only, it was from http://members.orcid.org/api/tutorial-retrieve-orcid-id**
++ Note: the value of $ORCID_ACCESS_TOKEN is only an example
+    + You get a new value from the API each time you authenticate successfully
 
 --
 
@@ -316,16 +319,16 @@ Now we can start querying the API for data
 ```
 
 + Note we're using the public ORCID API v1.2
-+ ORCID id is 0000-0003-0248-0813
++ ORCID id  we are searching for is 0000-0003-0248-0813 (it's in that middle of the URL in quotes)
 + We're piping the result into *example.json*
 
 --
 
 # Here's the result we saved
 
-+ [Unformate JSON response](unformated-example.txt)
-+ [example.json](example.json) - should pretty print if you have JSONView installed
++ [Unformated JSON response](unformated-example.txt)
 + [formatted JSON response](formatted-example.txt) with [jq](https://stedolan.github.io/jq)
++ [example.json](example.json) - should pretty print if you have JSONView installed
 
 --
 
@@ -375,48 +378,43 @@ See [wrublewski-pubs-demo.html](wrublewski-pubs-demo.html).
 
 Problem:
 
-+ We have a list of journals titles and ISSN, are they open access journals?
-+ What are their call numbers?
++ What are the call numbers for Donna's jounral titles?
 
 Data Sources:
 
-+ [DOAJ](https://doaj.org) - Directory of Open Access Journals
 + [OCLS](https://ocls.org) - Online Computer Library Center
-    + has call numbers
+    + has a public [Classify API](http://classify.oclc.org/classify2/api_docs/)
+    + has a explorer page for experimentation-- [OCLC Research Experimental Center](http://classify.oclc.org/classify2/api_docs/classify.html)
+    + can be search by "stndnbr" (a standard number), oclc, isbn, issn, upc, ident, heading, owi, author, title and summary
+    + API results can provide call numbers
 
 --
 
-# DOAJ finding Open Access Journals
+# Our Next Story
 
-+ Problem
-    + For  list of journal titles and ISSNs 
-        + check if they are listed in DOAJ
-        + collect additional metadata about them
-+ Requirements
-    + Access to the [DOAJ API](https://doaj.org/api/v1/docs)
-       + The public read API is sufficient for our needs
-+ Steps
-    + generate a list of Journal names and identifiers from our bib list
-        + [jq](https://stedolan.github.io/jq) is useful for this type of JSON data filtering
-    + For each journal query the DOAJ API
-    + Save the results
-
-Our output will be a CSV (comma separated value) document.
-
---
-
-# Tools needed
+## Tools needed
 
 + Bash (initially command line, later we'll create a script)
 + *curl* to fetch our data
-+ *jq* to filter our results and produce CSV output
++ *jq* to filter results from ORCID
 + *Open Refine* to clean our ata
 
 --
 
-# *jq* demo
+# Our Next Story
 
-## Creating our list of journal titles
+## Transforming our original data
+
+Sometimes it is easier to play with data in a tabluar format. Let's convert our
+ORCID JSON data into a simple table. We can do this with *jq*.
+
+--
+ 
+# Our Next Story
+
+## *jq* demo
+
+### Creating our list of journal titles
 
 *jq* makes it very easy to filter the complex output from the ORCID api into
 a simple list of journal titles. This is done by a dot notation path.
@@ -446,92 +444,123 @@ Initial output
 Piping the output through `grep -v null | sort -u ` cleans up the list easily
 
 ```shell
- jq '.["orcid-profile"]["orcid-activities"]["orcid-works"]["orcid-work"][]["journal-title"].value' example.json | grep -v "null" | sort -u
+    jq '.["orcid-profile"]["orcid-activities"]["orcid-works"]["orcid-work"][]["journal-title"].value' example.json | grep -v "null" | sort -u
 ```
 
 --
-Final list to check
+
+# Our Next Story
+
+## *jq* demo
+
+### Creating our list of journal titles
 
 ```text
     "Abstracts of Papers of the American Chemical Society"
     "Chemical Information for Chemists"
     "Science & Technology Libraries"
 ```
---
-
-# More experimentation
-
-After much more experimentation and looking up the *jq* [documentation](https://stedolan.github.io/jq) we came with this
-expression to generate a tab delimited file with work type, journal title, id type and id
-
-```
-    jq '.["orcid-profile"]["orcid-activities"]["orcid-works"]["orcid-work"][]' example.json |\
-      jq '{workType: .["work-type"], journalTitle: .["journal-title"].value, id: .["work-external-identifiers"]["work-external-identifier"][]["work-external-identifier-id"].value, idType: .["work-external-identifiers"]["work-external-identifier"][]["work-external-identifier-type"]}' |\
-        jq -r '. | [.workType, .journalTitle, .idType, .id] | join("\t")' > example.tab
-```
-
-See [example.tab](example.tab)
-
-```text
-    JOURNAL_ARTICLE		DOI	10.5062/F42R3PMS
-    JOURNAL_ARTICLE		EID	10.5062/F42R3PMS
-    JOURNAL_ARTICLE		DOI	2-s2.0-84858766300
-    JOURNAL_ARTICLE		EID	2-s2.0-84858766300
-    JOURNAL_ARTICLE	Science & Technology Libraries	DOI	10.1080/0194262x.2015.1135304
-    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
-    OTHER	Chemical Information for Chemists	DOI	10.1039/9781782620655-00206
-    OTHER	Chemical Information for Chemists	ISBN	10.1039/9781782620655-00206
-    OTHER	Chemical Information for Chemists	DOI	978-1-84973-551-3
-    OTHER	Chemical Information for Chemists	ISBN	978-1-84973-551-3
-    JOURNAL_ARTICLE		DOI	10.5062/F42R3PMS
-    JOURNAL_ARTICLE		EID	10.5062/F42R3PMS
-    JOURNAL_ARTICLE		DOI	2-s2.0-84858766300
-    JOURNAL_ARTICLE		EID	2-s2.0-84858766300
-    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
-    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
-    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
-    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
-    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
-    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
-    JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
-    CONFERENCE_PAPER		EID	2-s2.0-2442514124
-```
-
-This is OK but some of this is easier in other tools (e.g. Open Refine).
 
 --
 
-# Back to our real problem
+# Our Next Story
 
---
+## *jq* demo
 
-# How do we query DOAJ for Title or ISSN?
+### What about adding more columns?
 
-1. Go to the [DOAJ](https://doaj.org/api/v1/docs#!/Search/get_api_v1_search_journals_search_query) API playground
-2. Review the JSON scheme and see which field you need to query on
-3. Try out some queries by hand for individual entries
-4. Build up a Bash script that run the querries and accumulate the results
-5. Cleanup, depublicate in Open Refine
-
---
-
-# Discovering our data source
-
-+ [doaj](https://doaj.org/api/v1/docs#!/Search/get_api_v1_search_journals_search_query) provides a sandbox
-    + this link provides a playground which generates example *curl* command
-    + the field we want to match is `bibjson.title`
-
-Testing the suggested *curl*
+After much more experimentation and looking closely at the *jq* [documentation](https://stedolan.github.io/jq) 
+you can build up a list of filters that can transform your data. I found it easer to break things
+up and pipe through different instances of *jq*. 
 
 ```shell
-    curl -X GET --header "Accept: application/json" \
-        "https://doaj.org/api/v1/search/journals/bibjson.title%3AAbstracts%20of%20Papers of the American Chemical Society
+    jq '.["orcid-profile"]["orcid-activities"]["orcid-works"]["orcid-work"][]' example.json |\
+      jq '{workType: .["work-type"], journalTitle: .["journal-title"].value, id: .["work-external-identifiers"]["work-external-identifier"][]["work-external-identifier-id"].value, idType: .["work-external-identifiers"]["work-external-identifier"][]["work-external-identifier-type"]}' |\
+        jq -r '. | [.workType, .journalTitle, .idType, .id] | join(",")' > example.csv
+```
+
+See [example.csv](example.csv)
+
+```text
+    JOURNAL_ARTICLE,,DOI,10.5062/F42R3PMS
+    JOURNAL_ARTICLE,,EID,10.5062/F42R3PMS
+    JOURNAL_ARTICLE,,DOI,2-s2.0-84858766300
+    JOURNAL_ARTICLE,,EID,2-s2.0-84858766300
+    JOURNAL_ARTICLE,Science & Technology Libraries,DOI,10.1080/0194262x.2015.1135304
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    OTHER,Chemical Information for Chemists,DOI,10.1039/9781782620655-00206
+    OTHER,Chemical Information for Chemists,ISBN,10.1039/9781782620655-00206
+    OTHER,Chemical Information for Chemists,DOI,978-1-84973-551-3
+    OTHER,Chemical Information for Chemists,ISBN,978-1-84973-551-3
+    JOURNAL_ARTICLE,,DOI,10.5062/F42R3PMS
+    JOURNAL_ARTICLE,,EID,10.5062/F42R3PMS
+    JOURNAL_ARTICLE,,DOI,2-s2.0-84858766300
+    JOURNAL_ARTICLE,,EID,2-s2.0-84858766300
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    CONFERENCE_PAPER,,EID,2-s2.0-2442514124
+```
+
+This is OK but sometimes it is easier todo this type of transformation in tools like OpenRefine.
+
+--
+
+# Our Next Story
+
+## How do we query OCLC?
+
+1. Go to the [OCLC Research Experimental Center](http://classify.oclc.org/classify2/api_docs/classify.html)
+2. Try some values we discovered in [example.csv](example.csv) what combination works
+    + E.g. try using ISSN to get OWI, use OWI to get recommended Call Numbers (ddc, lcc)
+3. After we figure how we want to query, start trying it out in Bash using cURL.
+4. Build up a Bash script that run the querries and accumulate the results
+
+--
+
+# Our Next Story
+
+## Our toolbox
+
++ Bash
++ curl
++ cut
++ xpath (so we can pluck out specific values from XML)
++ OpenRefine
+
+--
+
+# Our Next Story
+
+Manually getting a call number of "Abstracts of Papers of the American Chemical Society" with ISSN "0065-7727"
+
+```shell
+    # Using ISSN to get owi number
+    curl http://classify.oclc.org/classify2/Classify?issn=0065-7727&summary=false
+    # USe owi to get recommended call number
+    curl http://classify.oclc.org/classify2/Classify?owi=15255596&summary=false
+```
+
+This is fine if you're a human picking through the XML, but if you have *xpath* then we can pull out the values you
+want easily. 
+
+(FIXME: my xpath on my Mac is lacks the common options of -q and -e, rather than pull data directly why not
+calc URL save as a column and let OpenRefine do the final fetch and retrieve of the call number recommendations)
+
+
+```shell
 ```
 
 
 --
 
-# Case Study (data source, open web API)
+# Our Final Story
+
+## Data cleanup with OpenRefine
 
 (get the call number of the journals holding the open access articles from OCLC)
 

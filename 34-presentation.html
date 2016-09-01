@@ -10,9 +10,11 @@
 <a id="next-slide" rel="nav" href="35-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1><em>jq</em> demo</h1>
+   <section><h1>Our Next Story</h1>
 
-<h2>Creating our list of journal titles</h2>
+<h2><em>jq</em> demo</h2>
+
+<h3>Creating our list of journal titles</h3>
 
 <p><em>jq</em> makes it very easy to filter the complex output from the ORCID api into
 a simple list of journal titles. This is done by a dot notation path.</p>
@@ -39,7 +41,7 @@ a simple list of journal titles. This is done by a dot notation path.</p>
 
 <p>Piping the output through <code>grep -v null | sort -u</code> cleans up the list easily</p>
 
-<pre><code class="language-shell"> jq '.[&quot;orcid-profile&quot;][&quot;orcid-activities&quot;][&quot;orcid-works&quot;][&quot;orcid-work&quot;][][&quot;journal-title&quot;].value' example.json | grep -v &quot;null&quot; | sort -u
+<pre><code class="language-shell">    jq '.[&quot;orcid-profile&quot;][&quot;orcid-activities&quot;][&quot;orcid-works&quot;][&quot;orcid-work&quot;][][&quot;journal-title&quot;].value' example.json | grep -v &quot;null&quot; | sort -u
 </code></pre>
 </section>
 

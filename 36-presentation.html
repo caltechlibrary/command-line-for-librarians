@@ -10,12 +10,17 @@
 <a id="next-slide" rel="nav" href="37-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>More experimentation</h1>
+   <section><h1>Our Next Story</h1>
 
-<p>After much more experimentation and looking up the <em>jq</em> <a href="https://stedolan.github.io/jq">documentation</a> we came with this
-expression to generate a tab delimited file with work type, journal title, id type and id</p>
+<h2><em>jq</em> demo</h2>
 
-<pre><code>    jq '.[&quot;orcid-profile&quot;][&quot;orcid-activities&quot;][&quot;orcid-works&quot;][&quot;orcid-work&quot;][]' example.json |\
+<h3>What about adding more columns?</h3>
+
+<p>After much more experimentation and looking closely at the <em>jq</em> <a href="https://stedolan.github.io/jq">documentation</a>
+you can build up a list of filters that can transform your data. I found it easer to break things
+up and pipe through different instances of <em>jq</em>.</p>
+
+<pre><code class="language-shell">    jq '.[&quot;orcid-profile&quot;][&quot;orcid-activities&quot;][&quot;orcid-works&quot;][&quot;orcid-work&quot;][]' example.json |\
       jq '{workType: .[&quot;work-type&quot;], journalTitle: .[&quot;journal-title&quot;].value, id: .[&quot;work-external-identifiers&quot;][&quot;work-external-identifier&quot;][][&quot;work-external-identifier-id&quot;].value, idType: .[&quot;work-external-identifiers&quot;][&quot;work-external-identifier&quot;][][&quot;work-external-identifier-type&quot;]}' |\
         jq -r '. | [.workType, .journalTitle, .idType, .id] | join(&quot;\t&quot;)' &gt; example.tab
 </code></pre>
@@ -46,7 +51,7 @@ expression to generate a tab delimited file with work type, journal title, id ty
     CONFERENCE_PAPER		EID	2-s2.0-2442514124
 </code></pre>
 
-<p>This is OK but some of this is easier in other tools (e.g. Open Refine).</p>
+<p>This is OK but sometimes it is easier todo this type of transformation in tools like OpenRefine.</p>
 </section>
 
    <footer>

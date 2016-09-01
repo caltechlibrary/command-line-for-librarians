@@ -10,42 +10,16 @@
 <a id="next-slide" rel="nav" href="33-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>DOAJ finding Open Access Journals</h1>
+   <section><h1>Our Next Story</h1>
+
+<h2>Tools needed</h2>
 
 <ul>
-<li>Problem
-
-<ul>
-<li>For  list of journal titles and ISSNs
-
-<ul>
-<li>check if they are listed in DOAJ</li>
-<li>collect additional metadata about them</li>
-</ul></li>
-</ul></li>
-<li>Requirements
-
-<ul>
-<li>Access to the <a href="https://doaj.org/api/v1/docs">DOAJ API</a>
-
-<ul>
-<li>The public read API is sufficient for our needs</li>
-</ul></li>
-</ul></li>
-<li>Steps
-
-<ul>
-<li>generate a list of Journal names and identifiers from our bib list
-
-<ul>
-<li><a href="https://stedolan.github.io/jq">jq</a> is useful for this type of JSON data filtering</li>
-</ul></li>
-<li>For each journal query the DOAJ API</li>
-<li>Save the results</li>
-</ul></li>
+<li>Bash (initially command line, later we&rsquo;ll create a script)</li>
+<li><em>curl</em> to fetch our data</li>
+<li><em>jq</em> to filter results from ORCID</li>
+<li><em>Open Refine</em> to clean our ata</li>
 </ul>
-
-<p>Our output will be a CSV (comma separated value) document.</p>
 </section>
 
    <footer>
