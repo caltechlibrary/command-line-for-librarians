@@ -10,31 +10,22 @@
 <a id="next-slide" rel="nav" href="40-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Case Study (data source, open web API)</h1>
-
-<p>(get the call number of the journals holding the open access articles from OCLC)</p>
-
-<p>Applying the techniques of the open web</p>
-
-<h2>OCLC Public Web API retrieving Call Numbers</h2>
+   <section><h1>Discovering our data source</h1>
 
 <ul>
-<li>Problem
+<li><a href="https://doaj.org/api/v1/docs#!/Search/get_api_v1_search_journals_search_query">doaj</a> provides a sandbox
 
 <ul>
-<li>Processing a CSV file to get additional call number data from OCLC web API</li>
-<li>Data comes back as XML</li>
-</ul></li>
-<li>Lessons learned
-
-<ul>
-<li>Leverage environment variables for
-
-<ul>
-<li>Authorization key handling</li>
-</ul></li>
+<li>this link provides a playground which generates example <em>curl</em> command</li>
+<li>the field we want to match is <code>bibjson.title</code></li>
 </ul></li>
 </ul>
+
+<p>Testing the suggested <em>curl</em></p>
+
+<pre><code class="language-shell">    curl -X GET --header &quot;Accept: application/json&quot; \
+        &quot;https://doaj.org/api/v1/search/journals/bibjson.title%3AAbstracts%20of%20Papers of the American Chemical Society
+</code></pre>
 </section>
 
    <footer>

@@ -410,10 +410,13 @@ Our output will be a CSV (comma separated value) document.
 + Bash (initially command line, later we'll create a script)
 + *curl* to fetch our data
 + *jq* to filter our results and produce CSV output
++ *Open Refine* to clean our ata
 
 --
 
-# Creating our list of journal titles
+# *jq* demo
+
+## Creating our list of journal titles
 
 *jq* makes it very easy to filter the complex output from the ORCID api into
 a simple list of journal titles. This is done by a dot notation path.
@@ -493,6 +496,12 @@ See [example.tab](example.tab)
     JOURNAL_ARTICLE	Abstracts of Papers of the American Chemical Society	ISSN	0065-7727
     CONFERENCE_PAPER		EID	2-s2.0-2442514124
 ```
+
+This is OK but some of this is easier in other tools (e.g. Open Refine).
+
+--
+
+# Back to our real problem
 
 --
 
