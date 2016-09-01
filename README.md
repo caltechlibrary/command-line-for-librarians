@@ -1,6 +1,6 @@
 # Command Line for Librarians
 
-MMWConf presentation, Day 2 of MMWCon, Sept. 15, 2016
+[MMWCon](https://mmwcon.org/) [presentation, Day 2 of MMWCon, Sept. 15, 2016](https://mmwcon.org/sessions/21)
 
 ## Presenters
 
