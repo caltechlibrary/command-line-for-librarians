@@ -3,6 +3,7 @@
 # This script will a list of ORCID works by providing a ORCID number
 # email address.
 #
+export ORCID_API_URL="http://pub.orcid.org"
 
 function requireEnvVar() {
     if [ "$2" = "" ]; then
@@ -43,9 +44,9 @@ else
     echo "Login failed $?"
     exit 1
 fi
+
 requireEnvVar "ORCID_ACCESS_TOKEN" $ORCID_ACCESS_TOKEN
 
-#OUT_FORMAT="application/vdn.orcid+xml"
 OUT_FORMAT="application/json"
 
 if [ "$1" != "" ]; then
@@ -56,4 +57,4 @@ requireEnvVar "ORCID_NUMBER" $ORCID_NUMBER
 
 curl -L -H "Content-Type: $OUT_FORMAT" \
     -H "Authorization: Bearer $ORCID_ACCESS_TOKEN" \
-    -X GET "$ORCID_API_URL/v1.2/$ORCID_NUMBER/orcid-works"
+    -X GET "https://pub.orcid.org/v1.2/$ORCID_NUMBER/orcid-works"
