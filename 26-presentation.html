@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link href="css/slides.css" rel="stylesheet" />
+</head>
+<body>
+   <nav>
+<a id="start-slide" rel="nav" href="00-presentation.html" title="Return to start of presentation">Start</a>
+<a id="prev-slide" rel="nav" href="25-presentation.html" title="Previous slide">Prev</a>
+<a id="next-slide" rel="nav" href="27-presentation.html" title="Next slide">Next</a>
+   </nav>
+
+   <section><h1>Save the access token for re-use</h1>
+
+<p>The access token is a really long alphanumeric string with dashes.</p>
+
+<ul>
+<li>copy that to your clipboard and paste into a new environment variable</li>
+</ul>
+
+<pre><code class="language-shell">    export ORCID_ACCESS_TOKEN=89f0181c-168b-4d7d-831c-1fdda2d7bbbb
+</code></pre>
+
+<p>Now we can start querying the API for data</p>
+
+<ul>
+<li>Note: the value of $ORCID_ACCESS_TOKEN is only an example
+
+<ul>
+<li>You get a new value from the API each time you authenticate successfully</li>
+</ul></li>
+</ul>
+</section>
+
+   <footer>
+   </footer>
+   <script type="text/javascript" src="js/keyboard-nav.js"></script>
+</body>
+</html>
