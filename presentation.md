@@ -378,7 +378,7 @@ See [wrublewski-pubs-demo.html](wrublewski-pubs-demo.html).
 
 Problem:
 
-+ What are the call numbers for Donna's jounral titles?
++ What are the call numbers for Donna's journal titles?
 
 Data Sources:
 
