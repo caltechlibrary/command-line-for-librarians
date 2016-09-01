@@ -606,7 +606,7 @@ Applying the techniques of the open web
 
 + The web is more than the web browser
 + The command line is more then a character user interface and repl
-+ They are tools in a tool box for solving problems
++ They are tools in a toolbox for solving problems
 
 Download presentation at 
 
