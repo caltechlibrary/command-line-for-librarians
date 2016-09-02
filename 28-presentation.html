@@ -10,12 +10,17 @@
 <a id="next-slide" rel="nav" href="29-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Here&rsquo;s the result we saved</h1>
+   <section><h1>Using the auth token to access API data</h1>
+
+<pre><code class="language-shell">    curl -L -H &quot;Content-Type: application/json&quot; \
+         -H &quot;Authorization: Bearer $ORCID_ACCESS_TOKEN&quot; \
+         -X GET &quot;https://pub.orcid.org/v1.2/0000-0003-0248-0813/orcid-works&quot; &gt; example.json
+</code></pre>
 
 <ul>
-<li><a href="unformated-example.txt">Unformated JSON response</a></li>
-<li><a href="formatted-example.txt">formatted JSON response</a> with <a href="https://stedolan.github.io/jq">jq</a></li>
-<li><a href="example.json">example.json</a> - should pretty print if you have JSONView installed</li>
+<li>Note we&rsquo;re using the public ORCID API v1.2</li>
+<li>ORCID id  we are searching for is 0000-0003-0248-0813 (it&rsquo;s in that middle of the URL in quotes)</li>
+<li>We&rsquo;re piping the result into <em>example.json</em></li>
 </ul>
 </section>
 

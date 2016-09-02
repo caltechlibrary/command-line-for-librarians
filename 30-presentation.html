@@ -10,25 +10,21 @@
 <a id="next-slide" rel="nav" href="31-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>ORCID API</h1>
-
-<h2>For your reference</h2>
+   <section><h1>Creating a webpage with <em>mkpage</em></h1>
 
 <ul>
-<li>Setup ORCID API Access if you don&rsquo;t have it already
-
-<ul>
-<li><a href="http://members.orcid.org/api/accessing-public-api">http://members.orcid.org/api/accessing-public-api</a></li>
-<li>Tutorials
-
-<ul>
-<li><a href="https://members.orcid.org/api/tutorial-retrieve-orcid-id">Retrieving ORCID id</a></li>
-<li><a href="https://members.orcid.org/api/tutorial-retrieve-data-using-public-api">Retrieving Public Data</a></li>
-<li><a href="https://members.orcid.org/api/tutorial-searching-data-using-api">Using the search API</a></li>
-</ul></li>
-<li><a href="http://members.orcid.org/api/code-examples">Code Samples page</a></li>
-</ul></li>
+<li><a href="https://githbub.com/caltechlibrary/mkpage/releases/latest">mkpage</a> is a single page template engine</li>
+<li><a href="page.tmpl">A simple HTML template</a></li>
 </ul>
+
+<pre><code class="language-shell">    mkpage &quot;title=text:Publications List&quot; \
+           &quot;name=text:Donna Wrublewski&quot; 
+           &quot;orcid=text:0000-0003-0248-0813&quot;
+           &quot;works=example.json&quot; \
+           page-pubs.tmpl &gt; wrublewski-pubs-demo.html
+</code></pre>
+
+<p>See <a href="wrublewski-pubs-demo.html">wrublewski-pubs-demo.html</a>.</p>
 </section>
 
    <footer>
