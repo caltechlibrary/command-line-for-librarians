@@ -10,33 +10,23 @@
 <a id="next-slide" rel="nav" href="42-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Our Final Story</h1>
+   <section><h1>Our Next Story</h1>
 
-<h2>Data cleanup with OpenRefine</h2>
+<p>Manually getting a call number of &ldquo;Abstracts of Papers of the American Chemical Society&rdquo; with ISSN &ldquo;0065-7727&rdquo;</p>
 
-<p>(get the call number of the journals holding the open access articles from OCLC)</p>
+<pre><code class="language-shell">    # Using ISSN to get owi number
+    curl http://classify.oclc.org/classify2/Classify?issn=0065-7727&amp;summary=false
+    # USe owi to get recommended call number
+    curl http://classify.oclc.org/classify2/Classify?owi=15255596&amp;summary=false
+</code></pre>
 
-<p>Applying the techniques of the open web</p>
+<p>This is fine if you&rsquo;re a human picking through the XML, but if you have <em>xpath</em> then we can pull out the values you
+want easily.</p>
 
-<h2>OCLC Public Web API retrieving Call Numbers</h2>
+<p>(FIXME: my xpath on my Mac is lacks the common options of -q and -e, rather than pull data directly why not
+calc URL save as a column and let OpenRefine do the final fetch and retrieve of the call number recommendations)</p>
 
-<ul>
-<li>Problem
-
-<ul>
-<li>Processing a CSV file to get additional call number data from OCLC web API</li>
-<li>Data comes back as XML</li>
-</ul></li>
-<li>Lessons learned
-
-<ul>
-<li>Leverage environment variables for
-
-<ul>
-<li>Authorization key handling</li>
-</ul></li>
-</ul></li>
-</ul>
+<pre><code class="language-shell"></code></pre>
 </section>
 
    <footer>
