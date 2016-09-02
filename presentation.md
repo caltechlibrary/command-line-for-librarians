@@ -111,7 +111,7 @@ programs provides a rich toolbox to use when solving problems.
 ## Some New tools
 
 + [jq](https://github.com/stedolan/jq) is a JSON filter and pretty printer
-+ [mkpage](https://caltechlibrary.github.io/mkpage) - easily assemble webpages from a simple golang template
++ [mkpage](https://caltechlibrary.github.io/mkpage) - easily assemble webpages from simple templates
 
 --
 
