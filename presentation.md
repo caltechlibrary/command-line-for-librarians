@@ -81,10 +81,17 @@ The modern command line includes
 + keyboard navigation
     + arrow keys, delete keys, cut/paste
 + autocomplete (this is really your friend)
-    + In Bash tab is activates auto complete for some commands and paths
+    + in Bash tab activates autocomplete
 + command history which you can scroll back through time
-    + history 
-    + up arrow (for single command scroll back)
+    + use *up arrow* for single command scroll back
+    + or *history* to see ranges of commands you've run
+
+--
+
+# A toolbox
+
+Embracing both the command line and our common graphical UI
+programs we have a rich toolbox to use when solving problems.
 
 --
 

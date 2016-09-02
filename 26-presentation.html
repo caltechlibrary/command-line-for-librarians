@@ -10,24 +10,31 @@
 <a id="next-slide" rel="nav" href="27-presentation.html" title="Next slide">Next</a>
    </nav>
 
-   <section><h1>Save the access token for re-use</h1>
+   <section><h1>Authenticating with the API</h1>
 
-<p>The access token is a really long alphanumeric string with dashes.</p>
-
-<ul>
-<li>copy that to your clipboard and paste into a new environment variable</li>
-</ul>
-
-<pre><code class="language-shell">    export ORCID_ACCESS_TOKEN=89f0181c-168b-4d7d-831c-1fdda2d7bbbb
+<pre><code class="language-shell">    curl -L -H &quot;Accept: application/json&quot; \
+         -d &quot;client_id=$ORCID_CLIENT_ID&quot; \
+         -d &quot;client_secret=$ORCID_CLIENT_SECRET&quot; \
+         -d &quot;scope=/read-public&quot; \
+         -d &quot;grant_type=client_credentials&quot; \
+         &quot;https://pub.orcid.org/oauth/token&quot;
 </code></pre>
 
-<p>Now we can start querying the API for data</p>
+<ul>
+<li>This should return a JSON blob with our access token</li>
+</ul>
+
+<pre><code class="language-json">    {&quot;access_token&quot;:&quot;89f0181c-168b-4d7d-831c-1fdda2d7bbbb&quot;,
+    &quot;token_type&quot;:&quot;bearer&quot;,&quot;refresh_token&quot;:&quot;69e883f6-d84e-4ae6-87f5-ef0044e3e9a7&quot;,
+    &quot;expires_in&quot;:631138518,&quot;scope&quot;:&quot;/read-public&quot;,&quot;orcid&quot;:null}
+</code></pre>
 
 <ul>
-<li>Note: the value of $ORCID_ACCESS_TOKEN is only an example
+<li>Notice the URL and how we pass our client id and secret</li>
+<li>The access token is: 89f0181c-168b-4d7d-831c-1fdda2d7bbbb
 
 <ul>
-<li>You get a new value from the API each time you authenticate successfully</li>
+<li>these change, this is just a sample of what it looks like</li>
 </ul></li>
 </ul>
 </section>
