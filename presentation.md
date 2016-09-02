@@ -126,12 +126,33 @@ programs provides a rich toolbox to use when solving problems.
 
 # Scripting is automation
 
+## Start by building simple robots
+
++ Scripting is like instructing a robot
 + Simple automatation is just a list of commands
-    + Copy what you need from your history
-    + Save in a text file simple scripts (list of commands)
-+ You can also do complex things
-    + Decisions 
-    + Build functions or use other scripts you've written too
+    + copy what you need from your history
+    + save in a text file 
+    + run the file to replay those commands
+
+--
+
+# Scripting is automation
+
+## Grow into more complex ones
+
++ When you get comfortable you can do more complex things
+    + loop through data
+    + make decisions 
+        + if this then that else the other thing
+    + bundle those decisions into functions 
+
+## Functions are a bundle of...
+
++ commands
++ decisions
++ and loops
+
+you need to solve a small problem at hand
 
 --
 
