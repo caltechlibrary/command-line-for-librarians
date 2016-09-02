@@ -90,8 +90,8 @@ The modern command line includes
 
 # A toolbox
 
-Embracing both the command line and our common graphical UI
-programs we have a rich toolbox to use when solving problems.
+Embracing both the command line and our common graphical
+programs provides a rich toolbox to use when solving problems.
 
 --
 
