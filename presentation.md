@@ -70,7 +70,7 @@ About: [presentation](index.html)
 + Librarians are interested in Metadata
 + Often it is incomplete
 + But there are lots of API exposing metadata through the web
-+ Often combining it one source with another lets us get a big picture
++ Often combining one source with another lets us get a big picture
 
 --
 
