@@ -89,10 +89,12 @@ The modern command line includes
 
 --
 
-# A toolbox
+# Still why Bash for librarians?
 
-Embracing both the command line and our common graphical
-programs provides a rich toolbox to use when solving problems.
++ A toolbox?
+    + repition
+    + workflows
+    + constistancy
 
 --
 
