@@ -3,7 +3,7 @@
 
 ## [MMWCon](http://mmwcon.org) 2016
 
-+ Presenter [Heather Wilson](https://mmwcon.org/users/26)
++ Presenter [Heather Wilson](https://twitter.com/authcontroller)
     + Acquisitions and Electronic Resources Librarian
     + California Institute of Technology
 + Presenter [R. S. Doiel](https://rsdoiel.github.io)

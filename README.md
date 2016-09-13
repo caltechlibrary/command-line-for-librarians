@@ -4,7 +4,7 @@
 
 ## Presenters
 
-+ Heather Wilson, a librarian
++ [Heather Wilson](https://twitter.com/authcontroller), a librarian
 + [Robert Doiel](https://rsdoiel.github.io), a developer
 
 ## Abstract
