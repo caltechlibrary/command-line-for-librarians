@@ -3,7 +3,7 @@
 
 ## [MMWCon](http://mmwcon.org) 2016
 
-+ Presenter Heather Wilson
++ Presenter [Heather Wilson](https://mmwcon.org/users/26)
     + Acquisitions and Electronic Resources Librarian
     + California Institute of Technology
 + Presenter [R. S. Doiel](https://rsdoiel.github.io)
@@ -37,6 +37,7 @@ About: [presentation](index.html)
 + allows you to explore content in other formats
 + mix and match data and sources
 + it allows you to experiment and automate processes
++ the command line on many systems is called Bash
 
 --
 
