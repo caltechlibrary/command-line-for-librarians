@@ -92,7 +92,7 @@ The modern command line includes
 
 # Still why Bash for librarians?
 
-It's our toolbox. It helps us with--
+It's our toolbox. It helps us with &mdash;
 
 + repition
 + workflows
