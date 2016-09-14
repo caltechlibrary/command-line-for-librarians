@@ -162,7 +162,7 @@ you need to solve a small problem at hand
 # A User Story 
 
 + A colleague wants to include their publications in a webpage
-+ The instution maintains a repository of faculty/researcher's publications
++ The institution maintains a repository of faculty/researcher's publications
 + They've dropped by to talk about approach and get included in our repository
 
 --
