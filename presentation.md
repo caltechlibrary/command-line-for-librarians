@@ -14,7 +14,18 @@ About: [presentation](index.html)
 
 --
 
-# This big picture
+# Why this talk?
+
+## It's all about the metadata
+
++ Librarians are interested in Metadata
++ Often it is incomplete
++ But there are lots of API exposing metadata through the web
++ Often combining one source with another lets us get a big picture
+
+--
+
+# A big picture
 
 + The web is more than the web browser
 + The command line is more then a character user interface and repl
@@ -22,7 +33,7 @@ About: [presentation](index.html)
 
 --
 
-# the web is more than a web browser
+# The web is more than a web browser?
 
 + the web is webpages
 + the web interlinked data
@@ -37,41 +48,31 @@ About: [presentation](index.html)
 + allows you to explore content in other formats
 + mix and match data and sources
 + it allows you to experiment and automate processes
-+ the command line on many systems is called Bash
+
+The command line we're focusing on is the one provided by Bash
 
 --
 
-# What is Bash
+# What is Bash?
 
 + Bash is a Unix shell
-+ It provides a command line interface to programs
-+ It can be used to write small programs known as "scripts"
-+ It is the default shell for many Linux systems as well as Mac OS X
++ It provides a  way to run programs
++ It can be used interactively to evolve small programs known as "scripts"
++ It is the default shell for many Unix/Linux systems as well as Mac OS X
 + It also is available for Windows 
     + Git Core install, Bash for Ubuntu for Windows
 
 --
 
-# Why care?
+# Why do librarians care?
 
 + Bash lets you automate repetitive tasks easily
     + type a command see if it works
     + scroll back through a command history and cherry pick useful commands
 + The command line no longer lives in isolation from the graphic user interface
-    + You can generally cut and paste from a graphical app to into the shell
-    + You can copy text from the command line and paste into a graphical app
+    + You can cut and paste commands 
 
-
---
-
-# Why this talk?
-
-## It's all about the metadata
-
-+ Librarians are interested in Metadata
-+ Often it is incomplete
-+ But there are lots of API exposing metadata through the web
-+ Often combining one source with another lets us get a big picture
+RSD: The last one is a big one. In the old days of green screens this was problematic but on your touch device or desktop this is easy.
 
 --
 
@@ -91,47 +92,54 @@ The modern command line includes
 
 # Still why Bash for librarians?
 
-+ A toolbox?
-    + repition
-    + workflows
-    + constistancy
+It's our toolbox. It helps us with &mdash;
+
++ repition
++ workflows
++ constistancy
 
 --
 
-# What's in the toolbox?
+# What's in our toolbox?
 
 ## The old favorites of Unix
 
 + *curl* is the jackknife for web data access
 + *cat* and *more*
 + *cut*, *sed* and *grep*
-+ your favorite unix text editor
++ your favorite unix text editors
 
 --
 
-# What's in the toolbox?
+# What's in our toolbox?
 
-## Some New tools
+## There are newer tools too.
 
++ [git](http://www.git-scm.org) - a distributed version control system
 + [jq](https://github.com/stedolan/jq) is a JSON filter and pretty printer
 + [mkpage](https://caltechlibrary.github.io/mkpage) - easily assemble webpages from simple templates
 
 --
 
-# What's in the toolbox?
+# What's in our toolbox?
 
-## A browser plugin
+## Outside the shell we have
 
-+ [JSONView](https://jsonview.com/) - a JSON viewer for your web browser
++ Browser plugins like [JSONView](https://jsonview.com/) - a JSON viewer for your web browser
     + supports Firefox and Chrome
++ [OpenRefine](http://openrefine.org/)
++ Even web services like [Github](https://github.com) for collaboration
 
 --
 
-# Scripting is automation
+# What was this business about scripting?
 
-## Start by building simple robots
+Scripts are our path to automation. Think software robots doing our bidding.
 
-+ Scripting is like instructing a robot
+## Start with simple robots
+
++ Scripting is a set of instructions
++ Instructions can be executed by our robot
 + Simple automatation is just a list of commands
     + copy what you need from your history
     + save in a text file 
@@ -139,49 +147,49 @@ The modern command line includes
 
 --
 
-# Scripting is automation
+# What was this business about scripting?
 
 ## Grow into more complex ones
 
 + When you get comfortable you can do more complex things
-    + loop through data
     + make decisions 
         + if this then that else the other thing
-    + bundle those decisions into functions 
+    + loops through data (repeat this until...)
+    + bundle those decisions and loops together (e.g. functions, procedures)
 
-## Functions are a bundle of...
+--
 
-+ commands
-+ decisions
-+ and loops
+# A couple benefits of scripts.
 
-you need to solve a small problem at hand
++ Scripts can be evolved to solve specific problems
++ A script becomes a reference for solving related problems
 
 --
 
 # A User Story 
 
-+ A colleague wants to include their publications in a webpage
-+ The institution maintains a repository of faculty/researcher's publications
-+ They've dropped by to talk about approach and get included in our repository
++ A colleague needs to include a list of publications in a webpage
++ They've dropped by to talk about approaches to building and maintaining that page
 
 --
 
-# Problem approach
+# What's our problem and our approach?
 
-+ Collect some background info
-+ Identify systems that may have the information we want
-+ Query those systems and saving the resulting data (preferrable as JSON)
-+ Munging the data
-+ Import the data into our repository
++ Do some discovery by talking to our colleague
++ Identify systems that may have the information we want 
+    + ORCID? CrossRef? OCLC?
++ Query those systems and saving the resulting data 
+    + We like data in JSON formats
++ Munging the data if needed
 + Produce a webpage
 
 --
 
-# Our discovery
+# Our discovery, an ORCID
 
-+ Our colleague has an "ORCID id"
-    + See http://orcid.org
+ORCID Website http://orcid.org
+
++ Our colleague has an "ORCID id" 
 + ORCID is an unique identifier for authors and researchers
 + Many publications support ORCID (likely require in the future)
 + ORCID has an API
@@ -191,43 +199,45 @@ you need to solve a small problem at hand
 
 # An example ORCID listing
 
-+ Our colleague Donna Wrublewski
++ Our colleague is Donna 
 + Her ORCID Id: 0000-0003-0248-0813
 + Her profile url will be: http://orcid.org/0000-0003-0248-0813
 + The Works section is the data we want pull for our article list
 
-(image of webpage)
+--
+
+# ORCID API 
+
+The ORCID API gives us another view of that content.
+
+The ORCID API has three types access
+
++ Public (read) - https://pub.orcid.org
+    + The public API has some limitations
+    + But it's enough for our purposes
++ Member (read/write) - https://members.orcid.org
++ Sandbox (read/write, for testing) - https://pub.sandbox.orcid.org
+
+See https://orcid.org/organizations/integrators/API
 
 --
 
-# ORCID API
-
-+ The ORCID API has three types access
-    + Public (read) - https://pub.orcid.org
-    + Member (read/write) - https://members.orcid.org
-    + Sandbox (read/write, for testing) - https://pub.sandbox.orcid.org
-
---
-
-# ORCID API
-
-+ The public API has some limitations
-+ But it's enough for our purposes
-    + See https://orcid.org/organizations/integrators/API
-
---
-
-# ORCID API
+# Getting started ORCID
 
 ## How do we get started?
 
-+ We need to have our own ORCID id
+To access the API we need a Client ID and Client secret.
+
+For that we need to have our own ORCID id.
+
 + Once we have our own ORCID we can enable developer access
-+ We can get a client id and secret (this is what we used to authenticate)
++ Developer access lets of get a client id and secret (this is what we used to authenticate)
 
 --
 
 # Getting started with ORCID
+
+## Step 1
 
 + Go to http://orcid.org/register
 + Complete this process creates your ORCID Profile
@@ -236,8 +246,10 @@ you need to solve a small problem at hand
 
 # Getting started with ORCID
 
+## Step 2
+
 + Go to http://orcid.org/my-orcid and sign in
-+ Clik on "developer tools" in the upper menu
++ Click on "developer tools" in the upper menu
     + &#8658; https://orcid.org/developer-tools
     + Verify your Email
     + Register your "App"
@@ -245,16 +257,20 @@ you need to solve a small problem at hand
     + after that is complete you can "Register for the free ORCID public API"
 + See this http://support.orcid.org/knowledgebase/articles/343182 for details
 
-(see images ORCID1.png - ORCID6.png)
-
 --
 
 # Getting started with ORCID
+
+##  That was allot of work, why did we do that?
 
 The point of all that was to 
 
 + Know our "Client ID" (application id)
 + Know our "Client Secret" (application private key)
+
+Go to https://orcid.org/developer-tools and in the middle of the page
+You'll find a "show details" tab in the section about your "app". That
+has the answers we need for "Client ID" and "Client Secret".
 
 --
 
@@ -273,7 +289,7 @@ The point of all that was to
 
 # Getting our data
 
-## Accessing ORCID API with cURL
+## Accessing ORCID API with curl
 
 + save our "Client ID" and "Client Secret" in our environment
 + authenticate and get a "access token"
