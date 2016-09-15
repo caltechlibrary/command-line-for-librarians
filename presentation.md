@@ -393,8 +393,8 @@ Now we can start querying the API for data
 
 ```shell
     mkpage "title=text:Publications List" \
-           "name=text:Donna Wrublewski" 
-           "orcid=text:0000-0003-0248-0813"
+           "name=text:Donna Wrublewski" \
+           "orcid=text:0000-0003-0248-0813" \
            "works=example.json" \
            page-pubs.tmpl > wrublewski-pubs-demo.html
 ```
