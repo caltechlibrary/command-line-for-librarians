@@ -44,7 +44,7 @@ a, a:link, a:visited {
 }
 
 a:focus, a:active, a:hover {
-    color: lightblue;
+    color: red;
     text-decoration: underline;
 }
 
@@ -54,13 +54,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 1.24;
+    font-size: 2.24;
     color: blue;
     padding-bottom: 1em;
 }
 
 h2 {
-    font-size: 2.24em;
+    font-size: 1.24em;
     padding-bottom: 0.48em;
     color: green;
 }
