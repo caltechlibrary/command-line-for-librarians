@@ -427,13 +427,15 @@ See [wrublewski-pubs-demo.html](wrublewski-pubs-demo.html).
 
 --
 
-# Data cleanup with OpenRefine
+# Data Cleanup
 
 + Open refine (data cleanup)
-    + De-dup
-    + Cleaning up stats
+    + Remove metadata elements (XML, JSON)
+    + Cluster and edit for powerful "nearest neighbor" matching
     + Mass corrections
     + Bulk spreadsheet/CSV files
+
+![alt text](import.png "Import Options")
 
 --
 
@@ -449,6 +451,9 @@ See [wrublewski-pubs-demo.html](wrublewski-pubs-demo.html).
     + Versions
         + Raw data
         + Clean file
+        + Alternate and templated formats
+
+![alt text](export.png "Export Functions")
 
 --
 
@@ -469,5 +474,4 @@ Extended version of presentation with more use cases
 Download presentation at 
 
 https://github.com/caltechlibrary/command-line-for-librarians/releases/latest
-
 
