@@ -74,7 +74,7 @@ The command line we're focusing on is the one provided by Bash
 + The command line no longer lives in isolation from the graphic user interface
     + You can cut and paste commands 
 
-RSD: The last one is a big one. In the old days of green screens this was problematic but on your touch device or desktop this is easy.
+RSD: The last one is a big one. In the old days of green screens cutting and pasting wasn't standardized. Today this isn't really a problem.
 
 --
 
@@ -102,11 +102,14 @@ It's our toolbox. It helps us with &mdash;
 
 --
 
-# What's in our toolbox?
+## Old favorites
 
-## The old favorites of Unix
++ *curl* is the acme of web data access
 
-+ *curl* is the jackknife for web data access
+## The venerable
+
+They are their when you need them.
+
 + *cat* and *more*
 + *cut*, *sed* and *grep*
 + your favorite unix text editors
