@@ -15,6 +15,10 @@ function makePage () {
 
 # Presentation slides
 md2slides -css css/slides.css -template slide.tmpl presentation.md 
+
+# Presentation Long Version
+md2slides -css css/slides.css -template slide.tmpl presentation-extended.md
+
 # Add any new .html files to repo
 git add *.html
 

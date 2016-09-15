@@ -104,14 +104,9 @@ It's our toolbox. It helps us with &mdash;
 
 # What's in our toolbox?
 
-## Old favorites like
+## The old favorites of Unix
 
 + *curl* is the jackknife for web data access
-
-## The venerable
-
-They are their when you need them.
-
 + *cat* and *more*
 + *cut*, *sed* and *grep*
 + your favorite unix text editors
@@ -427,7 +422,202 @@ See [wrublewski-pubs-demo.html](wrublewski-pubs-demo.html).
 
 --
 
-# Data cleanup with OpenRefine
+
+# Another Story
+
+Problem:
+
++ What are the call numbers for Donna's journal titles?
+
+Data Sources:
+
++ [OCLC](https://oclc.org) - Online Computer Library Center
+    + has a public [Classify API](http://classify.oclc.org/classify2/api_docs/)
+    + has a explorer page for experimentation-- [OCLC Research Experimental Center](http://classify.oclc.org/classify2/api_docs/classify.html)
+    + can be search by "stndnbr" (a standard number), oclc, isbn, issn, upc, ident, heading, owi, author, title and summary
+    + API results can provide call numbers
+
+--
+
+# Our Next Story
+
+## Tools needed
+
++ Bash (initially command line, later we'll create a script)
++ *curl* to fetch our data
++ *jq* to filter results from ORCID
++ *Open Refine* to clean our ata
+
+--
+ 
+# Our Next Story
+
+## *jq* demo
+
+### Creating our initial list of journal titles
+
+*jq* makes it very easy to filter the complex output from the ORCID api into
+a simple list of journal titles. This is done by a dot notation path.
+
+```shell
+    jq '.["orcid-profile"]["orcid-activities"]["orcid-works"]["orcid-work"][]["journal-title"].value' example.json
+```
+
+Initial output
+
+```text
+    null
+    "Science & Technology Libraries"
+    "Abstracts of Papers of the American Chemical Society"
+    "Chemical Information for Chemists"
+    null
+    "Abstracts of Papers of the American Chemical Society"
+    "Abstracts of Papers of the American Chemical Society"
+    "Abstracts of Papers of the American Chemical Society"
+    "Abstracts of Papers of the American Chemical Society"
+    "Abstracts of Papers of the American Chemical Society"
+    "Abstracts of Papers of the American Chemical Society"
+    "Abstracts of Papers of the American Chemical Society"
+    null
+```
+
+Piping the output through `grep -v null | sort -u ` cleans up the list easily
+
+```shell
+    jq '.["orcid-profile"]["orcid-activities"]["orcid-works"]["orcid-work"][]["journal-title"].value' example.json | grep -v "null" | sort -u
+```
+
+--
+
+# Our Next Story
+
+## *jq* demo
+
+### Creating our list of journal titles
+
+```text
+    "Abstracts of Papers of the American Chemical Society"
+    "Chemical Information for Chemists"
+    "Science & Technology Libraries"
+```
+
+--
+
+# Our Next Story
+
+## *jq* demo
+
+### What about adding more columns?
+
+After much more experimentation and looking closely at the *jq* [documentation](https://stedolan.github.io/jq) 
+you can build up a list of filters that can transform your data. I found it easer to break things
+up and pipe through different instances of *jq*. 
+
+```shell
+    jq '.["orcid-profile"]["orcid-activities"]["orcid-works"]["orcid-work"][]' example.json |\
+      jq '{workType: .["work-type"], journalTitle: .["journal-title"].value, id: .["work-external-identifiers"]["work-external-identifier"][]["work-external-identifier-id"].value, idType: .["work-external-identifiers"]["work-external-identifier"][]["work-external-identifier-type"]}' |\
+        jq -r '. | [.workType, .journalTitle, .idType, .id] | join(",")' > example.csv
+```
+
+See [example.csv](example.csv)
+
+```text
+    JOURNAL_ARTICLE,,DOI,10.5062/F42R3PMS
+    JOURNAL_ARTICLE,,EID,10.5062/F42R3PMS
+    JOURNAL_ARTICLE,,DOI,2-s2.0-84858766300
+    JOURNAL_ARTICLE,,EID,2-s2.0-84858766300
+    JOURNAL_ARTICLE,Science & Technology Libraries,DOI,10.1080/0194262x.2015.1135304
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    OTHER,Chemical Information for Chemists,DOI,10.1039/9781782620655-00206
+    OTHER,Chemical Information for Chemists,ISBN,10.1039/9781782620655-00206
+    OTHER,Chemical Information for Chemists,DOI,978-1-84973-551-3
+    OTHER,Chemical Information for Chemists,ISBN,978-1-84973-551-3
+    JOURNAL_ARTICLE,,DOI,10.5062/F42R3PMS
+    JOURNAL_ARTICLE,,EID,10.5062/F42R3PMS
+    JOURNAL_ARTICLE,,DOI,2-s2.0-84858766300
+    JOURNAL_ARTICLE,,EID,2-s2.0-84858766300
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    JOURNAL_ARTICLE,Abstracts of Papers of the American Chemical Society,ISSN,0065-7727
+    CONFERENCE_PAPER,,EID,2-s2.0-2442514124
+```
+
+This is OK but sometimes it is easier todo this type of transformation in tools like OpenRefine.
+
+--
+
+# Our Next Story
+
+## How do we query OCLC?
+
+1. Go to the [OCLC Research Experimental Center](http://classify.oclc.org/classify2/api_docs/classify.html)
+2. Try some values we discovered in [example.csv](example.csv) what combination works
+    + E.g. try using ISSN to get OWI, use OWI to get recommended Call Numbers (ddc, lcc)
+3. After we figure how we want to query, start trying it out in Bash using cURL.
+4. Build up a Bash script that run the querries and accumulate the results
+
+--
+
+# Our Next Story
+
+## Our toolbox
+
++ Bash
++ curl
++ cut
++ xpath (so we can pluck out specific values from XML)
++ OpenRefine
+
+--
+
+# Our Next Story
+
+Manually getting a call number of "Abstracts of Papers of the American Chemical Society" with ISSN "0065-7727"
+
+```shell
+    # Using ISSN to get owi number
+    curl http://classify.oclc.org/classify2/Classify?issn=0065-7727&summary=false
+    # USe owi to get recommended call number
+    curl http://classify.oclc.org/classify2/Classify?owi=15255596&summary=false
+```
+
+This is fine if you're a human picking through the XML, but if you have *xpath* then we can pull out the values you
+want easily. 
+
+(FIXME: my xpath on my Mac is lacks the common options of -q and -e, rather than pull data directly why not
+calc URL save as a column and let OpenRefine do the final fetch and retrieve of the call number recommendations)
+
+
+```shell
+```
+
+
+--
+
+# Our Final Story
+
+## Data cleanup with OpenRefine
+
+(get the call number of the journals holding the open access articles from OCLC)
+
+Applying the techniques of the open web
+
+## OCLC Public Web API retrieving Call Numbers
+
++ Problem
+    + Processing a CSV file to get additional call number data from OCLC web API
+    + Data comes back as XML
++ Lessons learned
+    + Leverage environment variables for
+        + Authorization key handling
+
+--
+
+# Data Cleanup
 
 + Open refine (data cleanup)
     + De-dup
@@ -469,5 +659,4 @@ Extended version of presentation with more use cases
 Download presentation at 
 
 https://github.com/caltechlibrary/command-line-for-librarians/releases/latest
-
 

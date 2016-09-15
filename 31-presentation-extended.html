@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link href="css/slides.css" rel="stylesheet" />
+</head>
+<body>
+   <nav>
+<a id="start-slide" rel="nav" href="00-presentation-extended.html" title="Return to start of presentation">Start</a>
+<a id="prev-slide" rel="nav" href="30-presentation-extended.html" title="Previous slide">Prev</a>
+<a id="next-slide" rel="nav" href="32-presentation-extended.html" title="Next slide">Next</a>
+   </nav>
+
+   <section><h1>Creating a webpage with <em>mkpage</em></h1>
+
+<ul>
+<li><a href="https://githbub.com/caltechlibrary/mkpage/releases/latest">mkpage</a> is a single page template engine</li>
+<li><a href="page.tmpl">A simple HTML template</a></li>
+</ul>
+
+<pre><code class="language-shell">    mkpage &quot;title=text:Publications List&quot; \
+           &quot;name=text:Donna Wrublewski&quot; 
+           &quot;orcid=text:0000-0003-0248-0813&quot;
+           &quot;works=example.json&quot; \
+           page-pubs.tmpl &gt; wrublewski-pubs-demo.html
+</code></pre>
+
+<p>See <a href="wrublewski-pubs-demo.html">wrublewski-pubs-demo.html</a>.</p>
+</section>
+
+   <footer>
+        <a href="http://library.caltech.edu/CLS_Copyright.htm">Caltech library</a></span>
+        <address>1200 E California Blvd, Mail Code 1-32, Pasadena, CA 91125-3200</address> 
+        <span>Phone: <a href="tel:+1-626-395-3405">(626)395-3405</a></span>
+        <span><a href="mailto:library@caltech.edu">Email Us</a></span>
+   </footer>
+   <script type="text/javascript" src="js/keyboard-nav.js"></script>
+</body>
+</html>
