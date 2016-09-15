@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link href="css/slides.css" rel="stylesheet" />
+</head>
+<body>
+   <nav>
+<a id="start-slide" rel="nav" href="00-presentation.html" title="Return to start of presentation">Start</a>
+<a id="prev-slide" rel="nav" href="26-presentation.html" title="Previous slide">Prev</a>
+<a id="next-slide" rel="nav" href="28-presentation.html" title="Next slide">Next</a>
+   </nav>
+
+   <section><h1>Authenticating with the API</h1>
+
+<pre><code class="language-shell">    curl -L -H &quot;Accept: application/json&quot; \
+         -d &quot;client_id=$ORCID_CLIENT_ID&quot; \
+         -d &quot;client_secret=$ORCID_CLIENT_SECRET&quot; \
+         -d &quot;scope=/read-public&quot; \
+         -d &quot;grant_type=client_credentials&quot; \
+         &quot;https://pub.orcid.org/oauth/token&quot;
+</code></pre>
+
+<ul>
+<li>This should return a JSON blob with our access token</li>
+</ul>
+
+<pre><code class="language-json">    {&quot;access_token&quot;:&quot;89f0181c-168b-4d7d-831c-1fdda2d7bbbb&quot;,
+    &quot;token_type&quot;:&quot;bearer&quot;,&quot;refresh_token&quot;:&quot;69e883f6-d84e-4ae6-87f5-ef0044e3e9a7&quot;,
+    &quot;expires_in&quot;:631138518,&quot;scope&quot;:&quot;/read-public&quot;,&quot;orcid&quot;:null}
+</code></pre>
+
+<ul>
+<li>Notice the URL and how we pass our client id and secret</li>
+<li>The access token is: 89f0181c-168b-4d7d-831c-1fdda2d7bbbb
+
+<ul>
+<li>these change, this is just a sample of what it looks like</li>
+</ul></li>
+</ul>
+</section>
+
+   <footer>
+        <a href="http://library.caltech.edu/CLS_Copyright.htm">Caltech library</a></span>
+        <address>1200 E California Blvd, Mail Code 1-32, Pasadena, CA 91125-3200</address> 
+        <span>Phone: <a href="tel:+1-626-395-3405">(626)395-3405</a></span>
+        <span><a href="mailto:library@caltech.edu">Email Us</a></span>
+   </footer>
+   <script type="text/javascript" src="js/keyboard-nav.js"></script>
+</body>
+</html>

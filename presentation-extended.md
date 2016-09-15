@@ -601,32 +601,17 @@ calc URL save as a column and let OpenRefine do the final fetch and retrieve of 
 
 --
 
-# Our Final Story
-
-## Data cleanup with OpenRefine
-
-(get the call number of the journals holding the open access articles from OCLC)
-
-Applying the techniques of the open web
-
-## OCLC Public Web API retrieving Call Numbers
-
-+ Problem
-    + Processing a CSV file to get additional call number data from OCLC web API
-    + Data comes back as XML
-+ Lessons learned
-    + Leverage environment variables for
-        + Authorization key handling
-
---
-
 # Data Cleanup
 
+## Our Final Story
+
 + Open refine (data cleanup)
-    + De-dup
-    + Cleaning up stats
+    + Remove metadata elements (XML, JSON)
+    + Cluster and edit for powerful "nearest neighbor" matching
     + Mass corrections
     + Bulk spreadsheet/CSV files
+
+![alt text](/assets/import.png "Import Options")
 
 --
 
@@ -642,6 +627,11 @@ Applying the techniques of the open web
     + Versions
         + Raw data
         + Clean file
+        + Alternate and templated formats
+
+![alt text](/assets/export.png "Export Functions")
+
+--
 
 --
 
