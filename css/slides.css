@@ -44,7 +44,7 @@ a, a:link, a:visited {
 }
 
 a:focus, a:active, a:hover {
-    color: lightblue;
+    color: red;
     text-decoration: underline;
 }
 
